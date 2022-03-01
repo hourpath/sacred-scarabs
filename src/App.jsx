@@ -20,8 +20,6 @@ import "antd/dist/antd.css";
 // import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import QuickStart from "components/QuickStart";
-import Contract from "components/Contract/Contract";
-import Ramper from "components/Ramper";
 import MenuItems from "./components/MenuItems";
 import Landing from "components/Landing";
 
@@ -107,20 +105,14 @@ const App = ({ isServerInfo }) => {
             <Route path="/erc20balance">
               <ERC20Balance />
             </Route>
-            <Route path="/onramp">
-              <Ramper />
-            </Route>
             <Route path="/erc20transfers">
               <ERC20Transfers />
             </Route>
             <Route path="/nftBalance">
               <NFTBalance />
             </Route>
-            <Route path="/contract">
-              <Contract />
-            </Route>
             <Route path="/">
-              <Redirect to="/quickstart" />
+              <Redirect to="/home" />
             </Route>
             <Route path="/ethereum-boilerplate">
               <Redirect to="/quickstart" />

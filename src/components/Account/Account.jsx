@@ -52,8 +52,8 @@ function Account() {
   if (!isAuthenticated || !account) {
     return (
       <>
-        <div onClick={() => setIsAuthModalVisible(true)}>
-          <p style={styles.text}>Authenticate</p>
+        <div className='underline' onClick={() => setIsAuthModalVisible(true)}>
+          <p style={styles.text}>Connect</p>
         </div>
         <Modal
           visible={isAuthModalVisible}
