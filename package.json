@@ -41,6 +41,7 @@
     "format": "npm run lint:fix && npm run prettier:fix",
     "prepare": "husky install"
   },
+  "proxy": "http://localhost:3080/",
   "eslintConfig": {
     "extends": [
       "react-app",
