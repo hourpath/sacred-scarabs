@@ -128,9 +128,14 @@ const App = ({ isServerInfo }) => {
   );
 };
 
+
+
+//THIS NEEDS TO CHANGE ITS HARDCODED
 export const Logo = () => (
   <div style={{ display: "flex" }}>
+    <a href='http://localhost:3000/home'>
     <img src={SSLogo} />
+    </a>
 
     {/* <svg
       width="60"
