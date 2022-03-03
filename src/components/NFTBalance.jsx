@@ -10,6 +10,8 @@ import { getExplorer } from "helpers/networks";
 import AddressInput from "./AddressInput";
 import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 import CircularProgress from '@mui/material/CircularProgress';
+import Pagination from '@mui/material/Pagination';
+
 
 const { Meta } = Card;
 
@@ -35,6 +37,11 @@ function NFTBalance() {
   const [nftToSend, setNftToSend] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
+  const [page, setPage] = useState(1);
+
+
+  const NUM_PER_PAGE = 12;
+
 
   async function transfer(nft, amount, receiver) {
     console.log(nft, amount, receiver);
@@ -60,6 +67,11 @@ function NFTBalance() {
       setIsPending(false);
     }
   }
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    //Use value as it is to do something from here.
+    
+  };
 
   const handleTransferClick = (nft) => {
     setNftToSend(nft);
@@ -69,6 +81,7 @@ function NFTBalance() {
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
+
   const done = (<Skeleton loading={!NFTBalances?.result}>
     {NFTBalances?.result &&
       NFTBalances.result.map((nft, index) => {
@@ -115,9 +128,12 @@ function NFTBalance() {
           </Card>
         );
       })}
+      {NFTBalances?.result && <Pagination count={Math.round(NFTBalances.result.length / NUM_PER_PAGE) +1 } page={page}  onChange={handlePageChange} /> }
+      
   </Skeleton>)
 
-  console.log("NFTBalances", NFTBalances);
+
+  // console.log("NFTBalances", NFTBalances);
   return (
     <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
       <div style={styles.NFTs}>
