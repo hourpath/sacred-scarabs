@@ -21,8 +21,8 @@ export default function Landing() {
           </Row>
         </div>
         <Col>
-          <p className="main-paragraph">
-            he mission of the Sacred Scarabs NFT community and decentralized
+          <p>
+            The mission of the Sacred Scarabs NFT community and decentralized
             application is to provide crowd-funding to members who are actively
             working towards planetary healing.
           </p>

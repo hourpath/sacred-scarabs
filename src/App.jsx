@@ -32,8 +32,7 @@ const styles = {
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
     color: "#041836",
-    marginTop: "130px",
-    padding: "10px",
+    marginTop: "130px"
   },
   header: {
     position: "fixed",
@@ -51,7 +50,7 @@ const styles = {
   headerRight: {
     display: "flex",
     gap: "20px",
-    alignItems: "center",
+    alignItems: "right",
     fontSize: "15px",
     fontWeight: "600",
   },
@@ -134,7 +133,7 @@ const App = ({ isServerInfo }) => {
 export const Logo = () => (
   <div style={{ display: "flex" }}>
     <a href='http://localhost:3000/home'>
-    <img src={SSLogo} />
+    <img height="70px" src={SSLogo} />
     </a>
 
     {/* <svg
