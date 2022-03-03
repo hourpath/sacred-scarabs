@@ -85,7 +85,7 @@ function Account() {
                 key={key}
                 onClick={async () => {
                   try {
-                    await authenticate({ provider: connectorId }).then(
+                    await authenticate({ provider: connectorId, signingMessage: 'Sacred Scarabs DAPP' }).then(
                       function (user) {
                         if (!user) {
                           alert("Please login to your web3 provider first");
