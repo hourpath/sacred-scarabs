@@ -4,11 +4,11 @@ import scarabLogo from "./scarab-logo.png";
 const styles = {
   container: {
     height: "900px",
-    paddingBottom: "0px"
+    paddingBottom: "0px",
   },
   logoBoxPadding: {
-    paddingTop: "50px"
-  }
+    paddingTop: "50px",
+  },
 };
 
 export default function Landing() {
@@ -36,8 +36,8 @@ export default function Landing() {
           <Col className="headingText">
             <p>
               The mission of the Sacred Scarabs NFT community and decentralized
-              application is to provide crowd-funding to members who are actively
-              working towards planetary healing.
+              application is to provide crowd-funding to members who are
+              actively working towards planetary healing.
             </p>
           </Col>
         </Row>

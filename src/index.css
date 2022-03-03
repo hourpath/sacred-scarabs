@@ -72,7 +72,7 @@ select {
 .logoHelper {
   display: inline-block;
   text-align: center;
-  vertical-align: middle;  
+  vertical-align: middle;
 }
 
 .scarab-logo {
@@ -83,22 +83,22 @@ select {
 }
 
 .logo-text {
-  color:  #ffffff;
-  font-size:  48px;
+  color: #ffffff;
+  font-size: 48px;
 }
 
 .headingText {
-  margin-top:  20px;
-  color:  #ffffff;
+  margin-top: 20px;
+  color: #ffffff;
   font-size: 24px;
   text-align: center;
 }
 
 .subHeadingText {
-  margin-top:  20px;
-  color:  #ffffff;
-  font-size: 18px; 
-  text-align: center; 
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
 }
 
 .vertical-center {

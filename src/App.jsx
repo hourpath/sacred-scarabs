@@ -58,8 +58,8 @@ const styles = {
     overflow: "auto",
     background: "#3c6580",
     paddingBottom: "0px",
-    marginBottom: "0px"
-  }
+    marginBottom: "0px",
+  },
 };
 const App = () => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
