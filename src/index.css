@@ -62,11 +62,7 @@ select {
 .logobox {
   height: 45vmin;
   width: 45vmin;
-  background-color: #ffffff;
   border-radius: 50%;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
 }
 
 .logoHelper {
@@ -76,15 +72,20 @@ select {
 }
 
 .scarab-logo {
-  height: 30vmin;
-  vertical-align: middle;
+  width:  200px;
+  height:  200px;
   pointer-events: none;
-  margin-top: 55px;
+  border-radius: "50%";
+  boxShadow: '0px 10px 12px black';
 }
 
 .logo-text {
   color: #ffffff;
   font-size: 48px;
+  text-shadow: 2px 2px 5px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headingText {
