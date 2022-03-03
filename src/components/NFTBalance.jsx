@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useMoralis, useNFTBalances } from "react-moralis";
+import React, { useEffect, useState } from "react";
+import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Input, Skeleton } from "antd";
 import {
   FileSearchOutlined,
@@ -28,8 +28,6 @@ const styles = {
 };
 
 function NFTBalance() {
-  const { data: NFTBalances } = useNFTBalances();
-  const { Moralis, chainId } = useMoralis();
   const [visible, setVisibility] = useState(false);
   const [receiverToSend, setReceiver] = useState(null);
   const [amountToSend, setAmount] = useState(null);
@@ -37,8 +35,32 @@ function NFTBalance() {
   const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
   const [page, setPage] = useState(1);
+  const [assets, setNFTs] = useState();
+  const { account } = useMoralisWeb3Api();
+  const {
+    Moralis,
+    isInitialized,
+    chainId,
+    account: walletAddress,
+  } = useMoralis();
 
   const NUM_PER_PAGE = 12;
+
+  useEffect(() => {
+    if (isInitialized) {
+      fetchNFTBalance().then((balance) => setNFTs(balance));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInitialized, chainId, walletAddress, page]);
+
+  const fetchNFTBalance = async () => {
+    return await account
+      .getNFTs({
+        address: walletAddress,
+        chain: chainId,
+      })
+      .then((result) => result);
+  };
 
   async function transfer(nft, amount, receiver) {
     console.log(nft, amount, receiver);
@@ -79,13 +101,13 @@ function NFTBalance() {
   };
 
   const showNFTS = (value) => {
-    const pagedNFTs = NFTBalances.result.slice(
+    const pagedNFTs = assets.result.slice(
       (value - 1) * NUM_PER_PAGE,
       value * NUM_PER_PAGE,
     );
     return (
-      <Skeleton loading={!NFTBalances?.result}>
-        {NFTBalances?.result &&
+      <Skeleton loading={!assets?.result}>
+        {assets?.result &&
           pagedNFTs.map((nft, index) => {
             //Verify Metadata
             nft = verifyMetadata(nft);
@@ -128,10 +150,10 @@ function NFTBalance() {
               </Card>
             );
           })}
-        {NFTBalances?.result && (
+        {assets?.result && (
           <Pagination
             style={{ margin: "auto" }}
-            count={Math.floor(NFTBalances.result.length / NUM_PER_PAGE) + 1}
+            count={Math.floor(assets.result.length / NUM_PER_PAGE) + 1}
             page={page}
             onChange={handlePageChange}
           />
@@ -140,11 +162,11 @@ function NFTBalance() {
     );
   };
 
-  // console.log("NFTBalances", NFTBalances);
+  // console.log("assets", assets);
   return (
     <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
       <div style={styles.NFTs}>
-        {NFTBalances?.result ? (
+        {assets?.result ? (
           showNFTS(page)
         ) : (
           <CircularProgress style={{ margin: "auto" }} />
