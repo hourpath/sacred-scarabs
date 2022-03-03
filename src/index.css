@@ -24,6 +24,7 @@ blockquote,
 dl,
 dd {
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -41,15 +42,6 @@ ol[class] {
 
 a:not([class]) {
   text-decoration-skip-ink: auto;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-article > * + * {
-  margin-top: 1em;
 }
 
 input,
@@ -72,14 +64,41 @@ select {
   width: 45vmin;
   background-color: #ffffff;
   border-radius: 50%;
-  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.logoHelper {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;  
 }
 
 .scarab-logo {
   height: 30vmin;
+  vertical-align: middle;
   pointer-events: none;
-  margin-top: 35px;
-  margin-left: 45px;
+  margin-top: 55px;
+}
+
+.logo-text {
+  color:  #ffffff;
+  font-size:  48px;
+}
+
+.headingText {
+  margin-top:  20px;
+  color:  #ffffff;
+  font-size: 24px;
+  text-align: center;
+}
+
+.subHeadingText {
+  margin-top:  20px;
+  color:  #ffffff;
+  font-size: 18px; 
+  text-align: center; 
 }
 
 .vertical-center {

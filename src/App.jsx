@@ -29,14 +29,15 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
+    background: "#3c6580",
     color: "#041836",
-    marginTop: "130px",
+    marginTop: "65px",
   },
   header: {
     position: "fixed",
     zIndex: 1,
     width: "100%",
-    background: "#fff",
+    background: "#3c6580",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -52,6 +53,13 @@ const styles = {
     fontSize: "15px",
     fontWeight: "600",
   },
+  layout: {
+    height: "100%",
+    overflow: "auto",
+    background: "#3c6580",
+    paddingBottom: "0px",
+    marginBottom: "0px"
+  }
 };
 const App = () => {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
@@ -65,7 +73,7 @@ const App = () => {
   }, [isAuthenticated, isWeb3Enabled]);
 
   return (
-    <Layout style={{ height: "100%", overflow: "auto" }}>
+    <Layout style={styles.layout}>
       <Router>
         <Header style={styles.header}>
           <Logo />

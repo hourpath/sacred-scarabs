@@ -26,7 +26,7 @@ const Application = () => {
     );
   else {
     return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center"}}>
         <Landing />
       </div>
     );
