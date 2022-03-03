@@ -32,7 +32,7 @@ const styles = {
     justifyContent: "center",
     fontFamily: "Roboto, sans-serif",
     color: "#041836",
-    marginTop: "130px"
+    marginTop: "130px",
   },
   header: {
     position: "fixed",
@@ -127,13 +127,11 @@ const App = ({ isServerInfo }) => {
   );
 };
 
-
-
 //THIS NEEDS TO CHANGE ITS HARDCODED
 export const Logo = () => (
   <div style={{ display: "flex" }}>
-    <a href='http://localhost:3000/home'>
-    <img height="70px" src={SSLogo} />
+    <a href="http://localhost:3000/home">
+      <img height="70px" src={SSLogo} />
     </a>
 
     {/* <svg

@@ -17,30 +17,27 @@ function MenuItems() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
 
-
-
-
   const loggedIn = (
-        <Menu
-          theme="light"
-          mode="horizontal"
-          style={{
-            display: "flex",
-            fontSize: "17px",
-            fontWeight: "500",
-            width: "100%",
-            justifyContent: "center",
-          }}
-          defaultSelectedKeys={[pathname]}
-        >
-          <Menu.Item key="/erc20balance">
-            <NavLink to="/erc20balance"> Balances</NavLink>
-          </Menu.Item>
-          <Menu.Item key="/nftBalance" >
-            <NavLink to="/nftBalance"> NFTs</NavLink>
-          </Menu.Item>
-        </Menu>
-      );
+    <Menu
+      theme="light"
+      mode="horizontal"
+      style={{
+        display: "flex",
+        fontSize: "17px",
+        fontWeight: "500",
+        width: "100%",
+        justifyContent: "center",
+      }}
+      defaultSelectedKeys={[pathname]}
+    >
+      <Menu.Item key="/erc20balance">
+        <NavLink to="/erc20balance"> Balances</NavLink>
+      </Menu.Item>
+      <Menu.Item key="/nftBalance">
+        <NavLink to="/nftBalance"> NFTs</NavLink>
+      </Menu.Item>
+    </Menu>
+  );
   const notLoggedIn = <p>Show Other stuff</p>;
 
   return <div>{isAuthenticated ? loggedIn : notLoggedIn}</div>;
