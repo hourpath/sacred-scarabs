@@ -40,7 +40,7 @@ function MenuItems() {
   );
   const notLoggedIn = <p>Show Other stuff</p>;
 
-  return <div>{isAuthenticated ? loggedIn : notLoggedIn}</div>;
+  return <div>{isAuthenticated && isWeb3Enabled ? loggedIn : notLoggedIn}</div>;
 }
 
 export default MenuItems;

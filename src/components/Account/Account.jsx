@@ -85,12 +85,21 @@ function Account() {
                 key={key}
                 onClick={async () => {
                   try {
-                    await authenticate({ provider: connectorId });
+                    await authenticate({ provider: connectorId }).then(
+                      function (user) {
+                        if (!user) {
+                          alert("Please login to your web3 provider first");
+                        }
+                      },
+                    );
                     window.localStorage.setItem("connectorId", connectorId);
                     setIsAuthModalVisible(false);
                   } catch (e) {
                     console.error(e);
                   }
+                  // if(account == null && ){
+                  //   alert("you need to sign into your web3 provider first");
+                  // }
                 }}
               >
                 <img src={icon} alt={title} style={styles.icon} />
