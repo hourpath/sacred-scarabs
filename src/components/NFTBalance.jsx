@@ -38,6 +38,7 @@ function NFTBalance() {
   const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
   const [page, setPage] = useState(1);
+ 
 
 
   const NUM_PER_PAGE = 12;
@@ -81,10 +82,14 @@ function NFTBalance() {
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
+  
 
-  const done = (<Skeleton loading={!NFTBalances?.result}>
+  const showNFTS = (value) =>{
+    const pagedNFTs = NFTBalances.result.slice((value -1) * NUM_PER_PAGE, value * NUM_PER_PAGE)
+      return (
+        <Skeleton loading={!NFTBalances?.result}>
     {NFTBalances?.result &&
-      NFTBalances.result.map((nft, index) => {
+      pagedNFTs.map((nft, index) => {
         //Verify Metadata
         nft = verifyMetadata(nft);
         return (
@@ -124,20 +129,22 @@ function NFTBalance() {
             }
             key={index}
           >
+            
             <Meta title={nft.name} description={nft.token_address} />
           </Card>
         );
       })}
-      {NFTBalances?.result && <Pagination count={Math.round(NFTBalances.result.length / NUM_PER_PAGE) +1 } page={page}  onChange={handlePageChange} /> }
+      {NFTBalances?.result && <Pagination style={{margin:'auto'}} count={Math.floor(NFTBalances.result.length / NUM_PER_PAGE) +1 } page={page}  onChange={handlePageChange} /> }
       
   </Skeleton>)
+  }
 
 
   // console.log("NFTBalances", NFTBalances);
   return (
     <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
       <div style={styles.NFTs}>
-        {NFTBalances?.result ? done : <CircularProgress style={{margin: 'auto'}} />}
+        {NFTBalances?.result ? showNFTS(page) : <CircularProgress style={{margin: 'auto'}} />}
       </div>
       <Modal
         title={`Transfer ${nftToSend?.name || "NFT"}`}
