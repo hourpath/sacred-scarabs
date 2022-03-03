@@ -1,32 +1,29 @@
 import scarabLogo from "./scarab-logo.png";
-import {
-  Container,
-  Grid
-} from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 const styles = {
   logoContainer: {
     height: "900px",
     paddingBottom: "0px",
-    marginTop: "80px"
+    marginTop: "80px",
   },
   logoBoxPadding: {
     paddingTop: "50px",
   },
   logoBackground: {
-    height: '100%',
-    width: "auto"
+    height: "100%",
+    width: "auto",
   },
   imageContainer: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   scarabLogo: {
-    width:  "250px",
-    height:  "250px",
+    width: "250px",
+    height: "250px",
     borderRadius: "50%",
-    boxShadow: '0px 10px 12px black'
-  }
+    boxShadow: "0px 10px 12px black",
+  },
 };
 
 export default function Landing() {
@@ -39,13 +36,13 @@ export default function Landing() {
           </Grid>
           <Grid item xs={12} md={4} height="250px">
             <div style={styles.logoBackground}>
-              <div style={styles.imageContainer}>    
+              <div style={styles.imageContainer}>
                 <img
                   style={styles.scarabLogo}
                   src={scarabLogo}
                   alt="scarab-logo"
-                /> 
-              </div>      
+                />
+              </div>
             </div>
           </Grid>
           <Grid item xs={12} md={4} justifyContent="center" alignItems="center">
@@ -56,9 +53,9 @@ export default function Landing() {
           <Grid item xs={12}>
             <div className="headingText">
               <p>
-                The mission of the Sacred Scarabs NFT community and decentralized
-                application is to provide crowd-funding to members who are
-                actively working towards planetary healing.
+                The mission of the Sacred Scarabs NFT community and
+                decentralized application is to provide crowd-funding to members
+                who are actively working towards planetary healing.
               </p>
             </div>
           </Grid>
@@ -73,8 +70,8 @@ export default function Landing() {
                   Opensea.io
                 </a>
               </p>
-            </div>          
-          </Grid>      
+            </div>
+          </Grid>
         </Grid>
       </Container>
     </div>

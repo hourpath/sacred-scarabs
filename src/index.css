@@ -72,11 +72,11 @@ select {
 }
 
 .scarab-logo {
-  width:  200px;
-  height:  200px;
+  width: 200px;
+  height: 200px;
   pointer-events: none;
   border-radius: "50%";
-  boxShadow: '0px 10px 12px black';
+  boxshadow: "0px 10px 12px black";
 }
 
 .logo-text {
