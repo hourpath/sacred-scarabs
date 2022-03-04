@@ -8,6 +8,10 @@ import { SelectOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import Text from "antd/lib/typography/Text";
 import { connectors } from "./config";
+
+
+
+
 const styles = {
   account: {
     height: "42px",
@@ -22,8 +26,9 @@ const styles = {
   },
   text: {
     color: "#21BF96",
+    float: "right"
   },
-  connector: {
+  connectorNormal: {
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
@@ -33,6 +38,18 @@ const styles = {
     marginRight: "auto",
     padding: "20px 5px",
     cursor: "pointer",
+  },
+  connectorHover: {
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    height: "auto",
+    justifyContent: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
+    padding: "20px 5px",
+    cursor: "pointer",
+    background:'red'
   },
   icon: {
     alignSelf: "center",
@@ -48,6 +65,9 @@ function Account() {
     useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
+
+  const [hover, setHover] = useState(false);
+  const [target, setTarget] = useState('');
 
   if (!isAuthenticated || !account) {
     return (
@@ -80,8 +100,19 @@ function Account() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             {connectors.map(({ title, icon, connectorId }, key) => (
-              <div
-                style={styles.connector}
+              <div id={title}
+              onMouseEnter={(e)=>{
+                setHover(true);
+                setTarget(e.target.id);
+              }}
+              onMouseLeave={()=>{
+                setHover(false);
+                console.log(target);
+                setTarget('');
+              }}
+              style={{
+                ...(hover && (target == title) ? styles.connectorHover : styles.connectorNormal)
+              }}
                 key={key}
                 onClick={async () => {
                   try {
@@ -98,9 +129,6 @@ function Account() {
                   } catch (e) {
                     console.error(e);
                   }
-                  // if(account == null && ){
-                  //   alert("you need to sign into your web3 provider first");
-                  // }
                 }}
               >
                 <img src={icon} alt={title} style={styles.icon} />
