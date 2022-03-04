@@ -13,6 +13,7 @@ const styles = {
     fontFamily: "Roboto, sans-serif",
     fontSize: "14px",
     padding: "0 10px",
+    marginRight: "5px"
   },
   button: {
     border: "2px solid rgb(231, 234, 243)",

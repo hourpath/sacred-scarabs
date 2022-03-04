@@ -1,7 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-export default function Dashboard() {
+export default function MyProjects() {
   return (
     <div>
       <Container>
@@ -9,7 +9,7 @@ export default function Dashboard() {
           <Grid item xs={12}>
             <div className="headingText">
               <Typography variant="h2" sx={{ color: "#ffffff" }}>
-                The Sacred Collections Minting Dashboard (COMING SOON!)
+                The Sacred Collections Staking Dashboard (COMING SOON!)
               </Typography>
             </div>
           </Grid>

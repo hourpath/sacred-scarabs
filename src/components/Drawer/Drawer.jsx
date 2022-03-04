@@ -10,7 +10,13 @@ import {
 } from "react-router-dom";
 import ERC20Balance from "components/ERC20Balance";
 import Landing from "components/Landing";
+import Dashboard from "components/Dashboard";
+import Profile from "components/Profile";
+import MyProjects from "components/MyProjects";
 import NFTBalance from "components/NFTBalance";
+import HealingNetwork from "components/HealingNetwork";
+import NFTMarket from "components/NFTMarket";
+import NFTStaking from "components/NFTStaking";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -172,14 +178,13 @@ export default function MiniDrawer() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+              sx={{ mr: 2, display: { xs: "none", md: "flex" }, flexGrow: 1 }}
             >
               Sacred Scarabs
             </Typography>
             <Chains
-              edge="end"
               sx={{
-                marginRight: 5,
+                mr: 5,
               }}
             ></Chains>
             <Account />
@@ -298,15 +303,27 @@ export default function MiniDrawer() {
             <Route path="/home">
               <Landing />
             </Route>
-            <Route path="/dashboard"></Route>
-            <Route path="/profile"></Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
             <Route path="/nftBalance">
               <NFTBalance />
             </Route>
-            <Route path="/my-projects"></Route>
-            <Route path="/healing-network"></Route>
-            <Route path="/nft-market"></Route>
-            <Route path="/nft-staking"></Route>
+            <Route path="/my-projects">
+              <MyProjects />
+            </Route>
+            <Route path="/healing-network">
+              <HealingNetwork />
+            </Route>
+            <Route path="/nft-market">
+              <NFTMarket />
+            </Route>
+            <Route path="/nft-staking">
+              <NFTStaking />
+            </Route>
             <Route path="/erc20balance">
               <ERC20Balance />
             </Route>
