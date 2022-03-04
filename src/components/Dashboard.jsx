@@ -7,15 +7,14 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
 
-const Item = styled(Card)(({ theme }) => ({
+/* const Item = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
+*/
 
 export default function Dashboard() {
   return (
@@ -26,9 +25,8 @@ export default function Dashboard() {
             The Sacred Collections Minting Dashboard (COMING SOON!)
           </Typography>
         </Grid>
-        <Grid container xs={12} sx={{ mt: 5 }}>
-          <Stack direction="row" spacing={2}>
-            <Item>
+        <Grid container spacing={2} sx={{ mt: 5 }}>
+          <Grid item xs={12} md={4} sx={{ gap: 2 }}>
               <Card>
                 <CardActionArea>
                   <CardMedia
@@ -52,8 +50,8 @@ export default function Dashboard() {
                   </Button>
                 </CardActions>
               </Card>
-            </Item>
-            <Item>
+            </Grid>
+            <Grid item xs={12} md={4}>
               <Card>
                 <CardActionArea>
                   <CardMedia
@@ -78,8 +76,8 @@ export default function Dashboard() {
                   </Button>
                 </CardActions>
               </Card>
-            </Item>
-            <Item>
+            </Grid>
+            <Grid item xs={12} md={4}>
               <Card>
                 <CardActionArea>
                   <CardMedia
@@ -103,8 +101,19 @@ export default function Dashboard() {
                   </Button>
                 </CardActions>
               </Card>
-            </Item>
-          </Stack>
+            </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item xs={12}>
+            <div className="subHeadingText">
+              <Typography variant="h6" sx={{ color: "#ffffff" }}>
+                View available NFTs available on{" "}
+                <a href="https://opensea.io/collection/sacred-scarabs">
+                  Opensea.io
+                </a>
+              </Typography>
+            </div>
+          </Grid>
         </Grid>
       </Container>
     </div>
