@@ -1,7 +1,7 @@
 import scarabLogo from "./scarab-logo.png";
 import { Container, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Divider from '@mui/material/Divider';
+import Divider from "@mui/material/Divider";
 
 const styles = {
   landingContainer: {
@@ -55,10 +55,12 @@ export default function Landing() {
             <div className="headingText">
               <Typography variant="h4" sx={{ color: "#ffffff" }}>
                 The mission of the Sacred Scarabs NFT community and
-                decentralized application is to provide users a network of healing practitioners locally or remotely.
+                decentralized application is to provide users a network of
+                healing practitioners locally or remotely.
               </Typography>
               <Typography variant="h5" sx={{ mt: 3, color: "#ffffff" }}>
-                Future development will include project funding for members who are actively working toward planetary ascension and healing.
+                Future development will include project funding for members who
+                are actively working toward planetary ascension and healing.
               </Typography>
             </div>
           </Grid>

@@ -1,6 +1,6 @@
 import { Container, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Paper from '@mui/material/Paper'
+import Paper from "@mui/material/Paper";
 
 export default function MyProjects() {
   return (
@@ -14,9 +14,7 @@ export default function MyProjects() {
               </Typography>
             </div>
           </Grid>
-          <Paper elevation={2}>
-
-          </Paper>
+          <Paper elevation={2}></Paper>
         </Grid>
       </Container>
     </div>

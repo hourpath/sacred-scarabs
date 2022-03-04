@@ -8,6 +8,7 @@ import { SelectOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import Text from "antd/lib/typography/Text";
 import { connectors } from "./config";
+import Tooltip from '@mui/material/Tooltip';
 
 const styles = {
   account: {
@@ -46,7 +47,6 @@ const styles = {
     marginRight: "auto",
     padding: "20px 5px",
     cursor: "pointer",
-    background: "red",
   },
   icon: {
     alignSelf: "center",
@@ -97,6 +97,7 @@ function Account() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             {connectors.map(({ title, icon, connectorId }, key) => (
+              <Tooltip title={hover && target == title ? "Please sign in to your " + title + " wallet." : ""} placement="top">
               <div
                 id={title}
                 onMouseEnter={(e) => {
@@ -105,7 +106,6 @@ function Account() {
                 }}
                 onMouseLeave={() => {
                   setHover(false);
-                  console.log(target);
                   setTarget("");
                 }}
                 style={{
@@ -134,6 +134,7 @@ function Account() {
                 <img src={icon} alt={title} style={styles.icon} />
                 <Text style={{ fontSize: "14px" }}>{title}</Text>
               </div>
+              </Tooltip>
             ))}
           </div>
         </Modal>
