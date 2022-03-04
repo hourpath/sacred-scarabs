@@ -1,2 +1,0 @@
-(this["webpackJsonpethereum-boilerplate"]=this["webpackJsonpethereum-boilerplate"]||[]).push([[11,14],{1711:function(n,e){},1715:function(n,e){},1716:function(n,e){},1720:function(n,e){},1730:function(n,e){},1732:function(n,e){}}]);
-//# sourceMappingURL=11.1c95c20b.chunk.js.map

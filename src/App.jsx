@@ -44,10 +44,10 @@ const App = () => {
   const theme = createTheme({
     typography: {
       allVariants: {
-        fontFamily:'PT Serif serif',
-        textTransform: 'none'
-      }
-    }
+        fontFamily: "PT Serif serif",
+        textTransform: "none",
+      },
+    },
   });
 
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
