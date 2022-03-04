@@ -41,7 +41,14 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 */
 
 const App = () => {
-  const theme = createTheme();
+  const theme = createTheme({
+    typography: {
+      allVariants: {
+        fontFamily:'PT Serif serif',
+        textTransform: 'none'
+      }
+    }
+  });
 
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
