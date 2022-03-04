@@ -8,7 +8,7 @@ import { SelectOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import Text from "antd/lib/typography/Text";
 import { connectors } from "./config";
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip from "@mui/material/Tooltip";
 
 const styles = {
   account: {
@@ -97,43 +97,50 @@ function Account() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             {connectors.map(({ title, icon, connectorId }, key) => (
-              <Tooltip title={hover && target == title ? "Please sign in to your " + title + " wallet." : ""} placement="top">
-              <div
-                id={title}
-                onMouseEnter={(e) => {
-                  setHover(true);
-                  setTarget(e.target.id);
-                }}
-                onMouseLeave={() => {
-                  setHover(false);
-                  setTarget("");
-                }}
-                style={{
-                  ...(hover && target == title
-                    ? styles.connectorHover
-                    : styles.connectorNormal),
-                }}
-                key={key}
-                onClick={async () => {
-                  try {
-                    await authenticate({
-                      provider: connectorId,
-                      signingMessage: "Sacred Scarabs DAPP",
-                    }).then(function (user) {
-                      if (!user) {
-                        alert("Please login to your web3 provider first");
-                      }
-                    });
-                    window.localStorage.setItem("connectorId", connectorId);
-                    setIsAuthModalVisible(false);
-                  } catch (e) {
-                    console.error(e);
-                  }
-                }}
+              <Tooltip
+                title={
+                  hover && target == title
+                    ? "Please sign in to your " + title + " wallet."
+                    : ""
+                }
+                placement="top"
               >
-                <img src={icon} alt={title} style={styles.icon} />
-                <Text style={{ fontSize: "14px" }}>{title}</Text>
-              </div>
+                <div
+                  id={title}
+                  onMouseEnter={(e) => {
+                    setHover(true);
+                    setTarget(e.target.id);
+                  }}
+                  onMouseLeave={() => {
+                    setHover(false);
+                    setTarget("");
+                  }}
+                  style={{
+                    ...(hover && target == title
+                      ? styles.connectorHover
+                      : styles.connectorNormal),
+                  }}
+                  key={key}
+                  onClick={async () => {
+                    try {
+                      await authenticate({
+                        provider: connectorId,
+                        signingMessage: "Sacred Scarabs DAPP",
+                      }).then(function (user) {
+                        if (!user) {
+                          alert("Please login to your web3 provider first");
+                        }
+                      });
+                      window.localStorage.setItem("connectorId", connectorId);
+                      setIsAuthModalVisible(false);
+                    } catch (e) {
+                      console.error(e);
+                    }
+                  }}
+                >
+                  <img src={icon} alt={title} style={styles.icon} />
+                  <Text style={{ fontSize: "14px" }}>{title}</Text>
+                </div>
               </Tooltip>
             ))}
           </div>

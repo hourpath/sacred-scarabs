@@ -7,7 +7,7 @@ import "antd/dist/antd.css";
 // import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Drawer from "components/Drawer/Drawer";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 /* const styles = {
   header: {
