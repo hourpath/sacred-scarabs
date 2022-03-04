@@ -2,10 +2,9 @@ import scarabLogo from "./scarab-logo.png";
 import { Container, Grid } from "@mui/material";
 
 const styles = {
-  logoContainer: {
-    height: "900px",
-    paddingBottom: "0px",
-    marginTop: "80px",
+  landingContainer: {
+    paddingTop: "80px",
+    background: "#3c6580",
   },
   logoBoxPadding: {
     paddingTop: "50px",
@@ -29,7 +28,7 @@ const styles = {
 export default function Landing() {
   return (
     <div>
-      <Container style={styles.logoContainer}>
+      <Container style={styles.landingContainer}>
         <Grid container>
           <Grid item xs={12} md={4} justifyContent="center" alignItems="center">
             <p className="logo-text">Sacred</p>
