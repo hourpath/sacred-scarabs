@@ -1,5 +1,6 @@
 import scarabLogo from "./scarab-logo.png";
 import { Container, Grid } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 const styles = {
   landingContainer: {
@@ -51,24 +52,24 @@ export default function Landing() {
         <Grid container>
           <Grid item xs={12}>
             <div className="headingText">
-              <p>
+              <Typography variant="h4" sx={{ color: "#ffffff" }}>
                 The mission of the Sacred Scarabs NFT community and
                 decentralized application is to provide crowd-funding to members
                 who are actively working towards planetary healing.
-              </p>
+              </Typography>
             </div>
           </Grid>
         </Grid>
         <Grid container>
           <Grid item xs={12}>
             <div className="subHeadingText">
-              <p>
+              <Typography variant="h6" sx={{ color: "#ffffff" }}>
                 {" "}
                 View available NFTs available on{" "}
                 <a href="https://opensea.io/collection/sacred-scarabs">
                   Opensea.io
                 </a>
-              </p>
+              </Typography>
             </div>
           </Grid>
         </Grid>
