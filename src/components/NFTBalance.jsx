@@ -25,6 +25,10 @@ const styles = {
     width: "100%",
     gap: "10px",
   },
+  footerDiv: {
+    display: "flex",
+    width: "100%",
+  },
 };
 
 function NFTBalance() {
@@ -66,7 +70,6 @@ function NFTBalance() {
   }
   const handlePageChange = (event, value) => {
     setPage(value);
-    //Use value as it is to do something from here.
   };
 
   const handleTransferClick = (nft) => {
@@ -128,19 +131,25 @@ function NFTBalance() {
               </Card>
             );
           })}
-        {NFTBalances?.result && (
-          <Pagination
-            style={{ margin: "auto" }}
-            count={Math.floor(NFTBalances.result.length / NUM_PER_PAGE) + 1}
-            page={page}
-            onChange={handlePageChange}
-          />
-        )}
+        <div style={styles.footerDiv}>
+          {NFTBalances?.result && (
+            <Pagination
+              style={{
+                margin: "auto",
+                dislpay: "block",
+                height: "75px",
+                paddingTop: "10px",
+              }}
+              count={Math.floor(NFTBalances.result.length / NUM_PER_PAGE) + 1}
+              page={page}
+              onChange={handlePageChange}
+            />
+          )}
+        </div>
       </Skeleton>
     );
   };
 
-  // console.log("NFTBalances", NFTBalances);
   return (
     <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
       <div style={styles.NFTs}>
