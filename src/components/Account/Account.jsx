@@ -9,9 +9,6 @@ import { getExplorer } from "helpers/networks";
 import Text from "antd/lib/typography/Text";
 import { connectors } from "./config";
 
-
-
-
 const styles = {
   account: {
     height: "42px",
@@ -26,7 +23,7 @@ const styles = {
   },
   text: {
     color: "#21BF96",
-    float: "right"
+    float: "right",
   },
   connectorNormal: {
     alignItems: "center",
@@ -49,7 +46,7 @@ const styles = {
     marginRight: "auto",
     padding: "20px 5px",
     cursor: "pointer",
-    background:'red'
+    background: "red",
   },
   icon: {
     alignSelf: "center",
@@ -67,7 +64,7 @@ function Account() {
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
 
   const [hover, setHover] = useState(false);
-  const [target, setTarget] = useState('');
+  const [target, setTarget] = useState("");
 
   if (!isAuthenticated || !account) {
     return (
@@ -100,19 +97,22 @@ function Account() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             {connectors.map(({ title, icon, connectorId }, key) => (
-              <div id={title}
-              onMouseEnter={(e)=>{
-                setHover(true);
-                setTarget(e.target.id);
-              }}
-              onMouseLeave={()=>{
-                setHover(false);
-                console.log(target);
-                setTarget('');
-              }}
-              style={{
-                ...(hover && (target == title) ? styles.connectorHover : styles.connectorNormal)
-              }}
+              <div
+                id={title}
+                onMouseEnter={(e) => {
+                  setHover(true);
+                  setTarget(e.target.id);
+                }}
+                onMouseLeave={() => {
+                  setHover(false);
+                  console.log(target);
+                  setTarget("");
+                }}
+                style={{
+                  ...(hover && target == title
+                    ? styles.connectorHover
+                    : styles.connectorNormal),
+                }}
                 key={key}
                 onClick={async () => {
                   try {
