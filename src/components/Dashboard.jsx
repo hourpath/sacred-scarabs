@@ -27,81 +27,81 @@ export default function Dashboard() {
         </Grid>
         <Grid container spacing={2} sx={{ mt: 5 }}>
           <Grid item xs={12} md={4} sx={{ gap: 2 }}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={sacredSpider}
-                    alt="Sacred Spider #599"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Sacred Spiders NFT Collection
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Own 1 of 10,000 Sacred Spiders
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    MINT
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={scarabLogo}
-                    alt="Sacred Scarab #432"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Sacred Scarabs NFT Collection
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Own 1 of 5,000 Sacred Scarabs and gain access to the
-                      healers network
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    MINT
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={sacredSnake}
-                    alt="Sacred Snake #164"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Sacred Snakes NFT Collection
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Own 1 of 500 Sacred Snakes
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    MINT
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+            <Card>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={sacredSpider}
+                  alt="Sacred Spider #599"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Sacred Spiders NFT Collection
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Own 1 of 10,000 Sacred Spiders
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  MINT
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={scarabLogo}
+                  alt="Sacred Scarab #432"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Sacred Scarabs NFT Collection
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Own 1 of 5,000 Sacred Scarabs and gain access to the healers
+                    network
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  MINT
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={sacredSnake}
+                  alt="Sacred Snake #164"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Sacred Snakes NFT Collection
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Own 1 of 500 Sacred Snakes
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  MINT
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
         </Grid>
         <Grid container>
           <Grid item xs={12}>
