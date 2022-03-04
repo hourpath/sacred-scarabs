@@ -1,6 +1,7 @@
 import scarabLogo from "./scarab-logo.png";
 import { Container, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import Divider from '@mui/material/Divider';
 
 const styles = {
   landingContainer: {
@@ -49,22 +50,24 @@ export default function Landing() {
             <p className="logo-text">Scarabs</p>
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container sx={{ mt: 5 }}>
           <Grid item xs={12}>
             <div className="headingText">
               <Typography variant="h4" sx={{ color: "#ffffff" }}>
                 The mission of the Sacred Scarabs NFT community and
-                decentralized application is to provide crowd-funding to members
-                who are actively working towards planetary healing.
+                decentralized application is to provide users a network of healing practitioners locally or remotely.
+              </Typography>
+              <Typography variant="h5" sx={{ mt: 3, color: "#ffffff" }}>
+                Future development will include project funding for members who are actively working toward planetary ascension and healing.
               </Typography>
             </div>
           </Grid>
         </Grid>
+        <Divider sx={{ margin: 5 }} />
         <Grid container>
           <Grid item xs={12}>
             <div className="subHeadingText">
               <Typography variant="h6" sx={{ color: "#ffffff" }}>
-                {" "}
                 View available NFTs available on{" "}
                 <a href="https://opensea.io/collection/sacred-scarabs">
                   Opensea.io
