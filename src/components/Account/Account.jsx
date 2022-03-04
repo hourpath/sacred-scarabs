@@ -18,7 +18,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     width: "fit-content",
-    borderRadius: "12px",
+    borderRadius: "6px",
     backgroundColor: "rgb(244, 244, 244)",
     cursor: "pointer",
   },
@@ -189,7 +189,7 @@ function Account() {
         <Card
           style={{
             marginTop: "10px",
-            borderRadius: "1rem",
+            borderRadius: "6px",
           }}
           bodyStyle={{ padding: "15px" }}
         >
@@ -211,12 +211,11 @@ function Account() {
           </div>
         </Card>
         <Button
-          size="large"
           type="primary"
           style={{
             width: "100%",
             marginTop: "10px",
-            borderRadius: "0.5rem",
+            borderRadius: "6px",
             fontSize: "16px",
             fontWeight: "500",
           }}

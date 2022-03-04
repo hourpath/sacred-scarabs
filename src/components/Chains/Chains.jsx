@@ -9,15 +9,14 @@ const styles = {
     display: "flex",
     alignItems: "center",
     height: "42px",
-    fontWeight: "500",
-    fontFamily: "Roboto, sans-serif",
+    fontWeight: "800",
     fontSize: "14px",
     padding: "0 10px",
     marginRight: "5px",
   },
   button: {
     border: "2px solid rgb(231, 234, 243)",
-    borderRadius: "12px",
+    borderRadius: "6px",
   },
 };
 

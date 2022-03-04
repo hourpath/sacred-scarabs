@@ -7,6 +7,7 @@ import {
   Route,
   Redirect,
   NavLink,
+  Link
 } from "react-router-dom";
 import ERC20Balance from "components/ERC20Balance";
 import Landing from "components/Landing";
@@ -23,6 +24,10 @@ import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
+import Menu from '@mui/material/Menu';
+import Avatar from '@mui/material/Avatar';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -41,11 +46,11 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import PaletteIcon from "@mui/icons-material/Palette";
 import WorkIcon from "@mui/icons-material/Work";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import ArticleIcon from '@mui/icons-material/Article';
 import SSLogo from "assets/Logo.png";
 
 const topNavRoutes = [
-  { name: "Dashboard", path: "/dashboard", icon: "DashboardIcon" },
-  { name: "Profile", path: "/profile", icon: "AccountBoxIcon" },
+  { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" },
   { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon" },
   { name: "My Projects", path: "/my-projects", icon: "WorkIcon" },
 ];
@@ -58,11 +63,20 @@ const bottomNavRoutes = [
   },
   { name: "NFT Market", path: "/nft-market", icon: "ShopIcon" },
   { name: "NFT Staking", path: "/nft-staking", icon: "SavingsIcon" },
-  {
-    name: "Wallet Balance",
-    path: "/erc20balance",
-    icon: "AccountBalanceWalletIcon",
+  { name: 'Whitepaper',
+    path: 'https://sacred-scarabs.gitbook.io/sacred-scarabs-wiki/',
+    icon: 'ArticleIcon'
   },
+];
+
+const settings = [
+  { name: 'Profile',
+    path: '/profile'
+  },
+  {
+    name: 'Token Balances',
+    path: '/erc20balance'
+  }
 ];
 
 const drawerWidth = 240;
@@ -153,6 +167,16 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   return (
     <Router>
       <Box sx={{ display: "flex", background: "#3c6580" }}>
@@ -171,23 +195,56 @@ export default function MiniDrawer() {
             >
               <MenuIcon />
             </IconButton>
-            <NavLink to="/">
+            <Link to="/">
               <img height="70px" src={SSLogo} />
-            </NavLink>
+            </Link>
             <Typography
               variant="h6"
               noWrap
               component="div"
-              sx={{ mr: 2, display: { xs: "none", md: "flex" }, flexGrow: 1 }}
+              sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
             >
+            <Link to="/" style={{ color: "#ffffff", textDecoration: 'none' }}>
               Sacred Scarabs
+              </Link>
             </Typography>
-            <Chains
-              sx={{
-                mr: 5,
+            <MenuItem sx={{ p: 1 }}>
+              <Chains />
+            </MenuItem>
+            <MenuItem sx={{ p: 1 }}>
+              <Account />
+            </MenuItem>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
               }}
-            ></Chains>
-            <Account />
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                      <Link to={setting.path} >
+                        <Typography textAlign="center">{setting.name}</Typography>
+                      </Link>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -201,7 +258,7 @@ export default function MiniDrawer() {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List sx={{ background: "#544e6d" }}>
+          <List sx={{ background: "#544e6d", mt: 3 }}>
             {topNavRoutes.map((props) => (
               <NavLink to={props.path} style={drawerStyles.linkStyle}>
                 <ListItemButton
@@ -251,6 +308,38 @@ export default function MiniDrawer() {
           <Divider />
           <List sx={{ background: "#544e6d" }}>
             {bottomNavRoutes.map((props) => (
+              <div>
+              {props.name === 'Whitepaper' ? (
+                <ListItemButton
+                  key={props.path}
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {props.icon === "ArticleIcon" ? (
+                      <a href={props.path} target="_blank" rel="noreferrer" style={{ color: "#ffffff", textDecoration: 'none' }}>
+                      <ArticleIcon sx={{ color: "#ffffff" }} />
+                      </a>
+                    ) : (
+                      ""
+                    )}
+                    </ListItemIcon>
+                    <ListItemText sx={{ opacity: open ? 1 : 0 }} >
+                    <a href={props.path} target="_blank" rel="noreferrer" style={{ color: "#ffffff", textDecoration: 'none' }}>
+                    <Typography>{props.name}</Typography>
+                    </a>
+                  </ListItemText>
+                  </ListItemButton>
+                ) : (
               <NavLink to={props.path} style={drawerStyles.linkStyle}>
                 <ListItemButton
                   key={props.path}
@@ -294,10 +383,12 @@ export default function MiniDrawer() {
                   />
                 </ListItemButton>
               </NavLink>
+              )}
+              </div>
             ))}
           </List>
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3, minHeight: "100vh" }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 2, minHeight: "100vh" }}>
           <DrawerHeader />
           <Switch>
             <Route path="/home">
