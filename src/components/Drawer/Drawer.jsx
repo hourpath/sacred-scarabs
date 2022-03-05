@@ -173,16 +173,16 @@ export default function MiniDrawer() {
 
   const { isAuthenticated } = useMoralis();
   let topNavRoutes = [];
-  if(isAuthenticated){ 
+  if (isAuthenticated) {
     topNavRoutes = [
       { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" },
       { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon" },
       { name: "My Projects", path: "/my-projects", icon: "WorkIcon" },
-    ]
-  }else{
+    ];
+  } else {
     topNavRoutes = [
-      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" }
-    ]
+      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" },
+    ];
   }
   return (
     <Router>
@@ -222,45 +222,53 @@ export default function MiniDrawer() {
               <Account />
             </MenuItem>
             <Box sx={{ flexGrow: 0 }}>
-              {isAuthenticated ?
+              {isAuthenticated ? (
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
                   </IconButton>
                 </Tooltip>
-                :
-                  <Tooltip title="Log in to open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                    </IconButton>
-                  </Tooltip>
-                }
-              {isAuthenticated &&
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Link to={setting.path}>
-                      <Typography textAlign="center">{setting.name}</Typography>
-                    </Link>
-                  </MenuItem>
-                ))}
-              </Menu>
-              }
+              ) : (
+                <Tooltip title="Log in to open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
+                  </IconButton>
+                </Tooltip>
+              )}
+              {isAuthenticated && (
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Link to={setting.path}>
+                        <Typography textAlign="center">
+                          {setting.name}
+                        </Typography>
+                      </Link>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              )}
             </Box>
           </Toolbar>
         </AppBar>
