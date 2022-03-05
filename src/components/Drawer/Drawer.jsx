@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useMoralis } from "react-moralis";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import {
@@ -48,12 +49,6 @@ import WorkIcon from "@mui/icons-material/Work";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import ArticleIcon from "@mui/icons-material/Article";
 import SSLogo from "assets/Logo.png";
-
-const topNavRoutes = [
-  { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" },
-  { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon" },
-  { name: "My Projects", path: "/my-projects", icon: "WorkIcon" },
-];
 
 const bottomNavRoutes = [
   {
@@ -176,6 +171,19 @@ export default function MiniDrawer() {
     setAnchorElUser(null);
   };
 
+  const { isAuthenticated } = useMoralis();
+  let topNavRoutes = [];
+  if(isAuthenticated){ 
+    topNavRoutes = [
+      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" },
+      { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon" },
+      { name: "My Projects", path: "/my-projects", icon: "WorkIcon" },
+    ]
+  }else{
+    topNavRoutes = [
+      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" }
+    ]
+  }
   return (
     <Router>
       <Box sx={{ display: "flex", background: "#3c6580" }}>
@@ -214,11 +222,20 @@ export default function MiniDrawer() {
               <Account />
             </MenuItem>
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
+              {isAuthenticated ?
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                :
+                  <Tooltip title="Log in to open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    </IconButton>
+                  </Tooltip>
+                }
+              {isAuthenticated &&
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
@@ -236,13 +253,14 @@ export default function MiniDrawer() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Link to={setting.path}>
                       <Typography textAlign="center">{setting.name}</Typography>
                     </Link>
                   </MenuItem>
                 ))}
               </Menu>
+              }
             </Box>
           </Toolbar>
         </AppBar>
@@ -261,7 +279,7 @@ export default function MiniDrawer() {
             {topNavRoutes.map((props) => (
               <NavLink to={props.path} style={drawerStyles.linkStyle}>
                 <ListItemButton
-                  key={props.path}
+                  key={props}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? "initial" : "center",
@@ -310,7 +328,7 @@ export default function MiniDrawer() {
               <div>
                 {props.name === "Whitepaper" ? (
                   <ListItemButton
-                    key={props.path}
+                    key={props}
                     sx={{
                       minHeight: 48,
                       justifyContent: open ? "initial" : "center",
@@ -351,7 +369,7 @@ export default function MiniDrawer() {
                 ) : (
                   <NavLink to={props.path} style={drawerStyles.linkStyle}>
                     <ListItemButton
-                      key={props.path}
+                      key={props}
                       sx={{
                         minHeight: 48,
                         justifyContent: open ? "initial" : "center",
