@@ -13,4 +13,3 @@ Completing documentation for new developer onboarding and local environment setu
 GitBook Established for Whitepaper, community communication and collaboration.\
 Trello Established for Project Management and Bug Ticketing\
 Figma Established for Project Mocks and Design Tools
-
