@@ -16,7 +16,10 @@ export default function HealingNetwork() {
           <Grid item xs={12}>
             <div className="headingText">
               <Typography sx={{ mt: 5, fontSize: 20, color: "#ffffff" }}>
-                The Sacred Scarabs Healing Network will allow users worldwide to locate Wellness Coaches, Plant Medicine Shamans, Reiki and Bodywork Healers, Kambo Practitioners, Psychics and many other healers, either locally or remotely.
+                The Sacred Scarabs Healing Network will allow users worldwide to
+                locate Wellness Coaches, Plant Medicine Shamans, Reiki and
+                Bodywork Healers, Kambo Practitioners, Psychics and many other
+                healers, either locally or remotely.
               </Typography>
             </div>
           </Grid>

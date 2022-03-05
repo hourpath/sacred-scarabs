@@ -16,10 +16,14 @@ export default function MyProjects() {
           <Grid item xs={12}>
             <div className="headingText">
               <Typography sx={{ mt: 5, fontSize: 20, color: "#ffffff" }}>
-                The Sacred Scarabs NFT Staking dashboard will be where holders of the Sacred Collections accrue passive rewards as our internal token for participating in the community.
-                </Typography>
-                <Typography sx={{ mt: 2, fontSize: 20, color: "#ffffff" }}>
-                Each of the available Sacred NFTs has measurable rarity which will allow us to assign additional rewards to the NFTs with the highest rarities.
+                The Sacred Scarabs NFT Staking dashboard will be where holders
+                of the Sacred Collections accrue passive rewards as our internal
+                token for participating in the community.
+              </Typography>
+              <Typography sx={{ mt: 2, fontSize: 20, color: "#ffffff" }}>
+                Each of the available Sacred NFTs has measurable rarity which
+                will allow us to assign additional rewards to the NFTs with the
+                highest rarities.
               </Typography>
             </div>
           </Grid>

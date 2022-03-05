@@ -16,10 +16,14 @@ export default function MyProjects() {
           <Grid item xs={12}>
             <div className="headingText">
               <Typography sx={{ mt: 5, fontSize: 20, color: "#ffffff" }}>
-                The Sacred Scarabs project dashboard will be where users share their stories about what they are actively building or growing.
-                </Typography>
-                <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
-                The idea is to organically grow a community of supportive members who believe in the visions of others. Projects will have the ability to be single phase funded or multiple phases where you share your journey!
+                The Sacred Scarabs project dashboard will be where users share
+                their stories about what they are actively building or growing.
+              </Typography>
+              <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
+                The idea is to organically grow a community of supportive
+                members who believe in the visions of others. Projects will have
+                the ability to be single phase funded or multiple phases where
+                you share your journey!
               </Typography>
             </div>
           </Grid>

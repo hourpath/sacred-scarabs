@@ -21,7 +21,7 @@ export default function Dashboard() {
     <div>
       <Container>
         <Grid container>
-          <Typography variant="h2" sx={{ color: "#ffffff" }}>
+          <Typography variant="h3" sx={{ color: "#ffffff" }}>
             The Sacred Collections Minting Dashboard (COMING SOON!)
           </Typography>
         </Grid>
