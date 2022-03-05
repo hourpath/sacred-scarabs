@@ -1,12 +1,11 @@
 ---
 description: >-
   The mission of the Sacred Scarabs NFT community and decentralized application
-  is to provide crowd-funding to members who are actively working towards
-  planetary healing.
+  is to provide users a network of healing practitioners locally or remotely.
 ---
 
 # 🪲 Welcome to Sacred Scarabs!
 
 ## Welcome aboard!
 
-Welcome to the company wiki! Here you'll find everything you need to know about the company.
+Welcome to the community wiki! Here you'll find everything you need to know about the community.
