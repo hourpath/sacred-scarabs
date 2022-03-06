@@ -20,7 +20,7 @@ The Sacred collections began with Sacred Spiders. Sitting in meditation on a mou
 
 ![Sacred Spiders #19](.gitbook/assets/19.png)
 
-&#x20;This is how the design for the Sacred Spiders came into existence. I then began asking myself how I would represent God if I could.
+This is how the design for the Sacred Spiders came into existence. I then began asking myself how I would represent God if I could.
 
 The 5 Variations of Sacred symbols were chosen to represent God's love for us all and a Divine unity that exists between all creeds and cultures.
 
@@ -28,3 +28,8 @@ The probability of all 4 of the same symbols occurring in the corners is quite l
 
 The 7 different color variations in the backgrounds of the image represent the 7 chakras and their role in connecting us to Divine wisdom. There are 2 variances for each chakra. Does collecting all 7 have a benefit?
 
+The sacred geometry patterns that occur within the image are a representation of the mathematical precision of the Universe. God is a magnificent programmer. As above so below. The fractal representation of the holographic universe.
+
+The Spider. My deepest childhood fear. When deciding on the main subject I chose to represent God's love for me through my ability to overcome the most challenging spiritual battle. Fear.
+
+The spider also represented a traumatic childhood memory that was pivotal in realizing God's love for me and ultimately my trust in Him.
