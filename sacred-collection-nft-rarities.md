@@ -12,6 +12,8 @@ The number of collections, 8, was intentionally chosen to represent the infinite
 
 ### Sacred Spiders
 
+10,000 total to be minted.
+
 The Sacred collections began with Sacred Spiders. Sitting in meditation on a mountain in Southern California, I was hit with divine inspiration.
 
 "If You would have me create something. What would you have me Create?" I asked God inside my heart.
@@ -33,3 +35,21 @@ The sacred geometry patterns that occur within the image are a representation of
 The Spider. My deepest childhood fear. When deciding on the main subject I chose to represent God's love for me through my ability to overcome the most challenging spiritual battle. Fear.
 
 The spider also represented a traumatic childhood memory that was pivotal in realizing God's love for me and ultimately my trust in Him.
+
+The hourglass is representative of our limited belief in time. The infinite potential of the moment is exposed as we slow down and become present and aware.
+
+### Sacred Scarabs
+
+5,000 total to be minted.
+
+![Sacred Scarabs #68](.gitbook/assets/68.png)
+
+The Sacred Scarabs NFTs added additional variances and reduced total number to be minted.
+
+5 Sacred Symbols in black and 4 Gold Sacred Symbols now have a chance of appearing in the corners. The chances of 4 corner all black and 4 corner all gold sacred symbols occurring is further reduced as a result.
+
+A new Eye of Horus variant layer was added. This is a representation of God's ever watchful eye over us. He is always with us. Whether we choose to acknowledge Him/Her/It or not is up to us. As I choose acknowledgement, life becomes much more simple and fulfilling.
+
+Metatron's Cube variant was also added in 5 different color variances.
+
+The Scarab main subject has 3 layers of variance with 7 different colors for each layer. The chance of a Scarab having all three colors on their shell is quite low as well.
