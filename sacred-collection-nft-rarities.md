@@ -53,3 +53,17 @@ A new Eye of Horus variant layer was added. This is a representation of God's ev
 Metatron's Cube variant was also added in 5 different color variances.
 
 The Scarab main subject has 3 layers of variance with 7 different colors for each layer. The chance of a Scarab having all three colors on their shell is quite low as well.
+
+### Sacred Snakes
+
+500 total to be minted.
+
+![Sacred Snakes #30](.gitbook/assets/30.png)
+
+The Sacred Snakes collection has the lowest number minted.
+
+An all gold design was decided upon for the Snakes collection. The 4 Golden Sacred Symbols from the Sacred Scarabs collection we added and the 5 black symbols removed. Probabilities of 4 corner pieces occurring in this collection is greater than others as a result.
+
+Sacred Snakes will be the most rare over all collections and represent early support to the project.
+
+Additional use cases for the Snakes collection is in manifestation phase.
