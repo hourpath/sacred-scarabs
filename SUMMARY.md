@@ -10,3 +10,4 @@
 ***
 
 * [Sacred Collection NFT Rarities](sacred-collection-nft-rarities.md)
+* [Governance](governance.md)
