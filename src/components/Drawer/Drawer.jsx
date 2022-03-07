@@ -55,21 +55,24 @@ const bottomNavRoutes = [
     name: "Healing Network",
     path: "/healing-network",
     icon: "VolunteerActivismIcon",
+    id: 1,
   },
-  { name: "NFT Market", path: "/nft-market", icon: "ShopIcon" },
-  { name: "NFT Staking", path: "/nft-staking", icon: "SavingsIcon" },
+  { name: "NFT Market", path: "/nft-market", icon: "ShopIcon", id: 2 },
+  { name: "NFT Staking", path: "/nft-staking", icon: "SavingsIcon", id: 3 },
   {
     name: "Whitepaper",
     path: "https://sacred-scarabs.gitbook.io/sacred-scarabs-wiki/",
     icon: "ArticleIcon",
+    id: 4,
   },
 ];
 
 const settings = [
-  { name: "Profile", path: "/profile" },
+  { name: "Profile", path: "/profile", id: 1 },
   {
     name: "Token Balances",
     path: "/erc20balance",
+    id: 2,
   },
 ];
 
@@ -175,13 +178,13 @@ export default function MiniDrawer() {
   let topNavRoutes = [];
   if (isAuthenticated) {
     topNavRoutes = [
-      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" },
-      { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon" },
-      { name: "My Projects", path: "/my-projects", icon: "WorkIcon" },
+      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon", id: 1 },
+      { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon", id: 2 },
+      { name: "My Projects", path: "/my-projects", icon: "WorkIcon", id: 3 },
     ];
   } else {
     topNavRoutes = [
-      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon" },
+      { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon", id: 1 },
     ];
   }
   return (
@@ -259,7 +262,7 @@ export default function MiniDrawer() {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                       <Link to={setting.path}>
                         <Typography textAlign="center">
                           {setting.name}
@@ -287,7 +290,7 @@ export default function MiniDrawer() {
             {topNavRoutes.map((props) => (
               <NavLink to={props.path} style={drawerStyles.linkStyle}>
                 <ListItemButton
-                  key={props}
+                  key={props.id}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? "initial" : "center",
@@ -336,7 +339,7 @@ export default function MiniDrawer() {
               <div>
                 {props.name === "Whitepaper" ? (
                   <ListItemButton
-                    key={props}
+                    key={props.id}
                     sx={{
                       minHeight: 48,
                       justifyContent: open ? "initial" : "center",
@@ -377,7 +380,7 @@ export default function MiniDrawer() {
                 ) : (
                   <NavLink to={props.path} style={drawerStyles.linkStyle}>
                     <ListItemButton
-                      key={props}
+                      key={props.id}
                       sx={{
                         minHeight: 48,
                         justifyContent: open ? "initial" : "center",

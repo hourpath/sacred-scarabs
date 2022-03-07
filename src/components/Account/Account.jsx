@@ -96,8 +96,9 @@ function Account() {
             Connect Wallet
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-            {connectors.map(({ title, icon, connectorId }, key) => (
+            {connectors.map(({ title, icon, connectorId, id }) => (
               <Tooltip
+                key={id}
                 title={
                   hover && target == title
                     ? "Please sign in to your " + title + " wallet."
@@ -120,7 +121,7 @@ function Account() {
                       ? styles.connectorHover
                       : styles.connectorNormal),
                   }}
-                  key={key}
+                  key={id}
                   onClick={async () => {
                     try {
                       await authenticate({
