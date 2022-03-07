@@ -288,7 +288,8 @@ export default function MiniDrawer() {
           <Divider />
           <List sx={{ background: "#544e6d", mt: 3 }}>
             {topNavRoutes.map((props) => (
-              <NavLink to={props.path} style={drawerStyles.linkStyle}>
+              <NavLink key={props.id} to={props.path} style={drawerStyles.linkStyle}>
+
                 <ListItemButton
                   key={props.id}
                   sx={{
@@ -336,7 +337,8 @@ export default function MiniDrawer() {
           <Divider />
           <List sx={{ background: "#544e6d" }}>
             {bottomNavRoutes.map((props) => (
-              <div>
+              <div key={props.id}>
+                
                 {props.name === "Whitepaper" ? (
                   <ListItemButton
                     key={props.id}
