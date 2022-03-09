@@ -4,7 +4,7 @@ import { useMoralis } from "react-moralis";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
 import Switch from "@mui/material/Switch";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 // import {statesList} from '../assets/states.js';
 
 export default function Profile() {
@@ -171,12 +171,12 @@ export default function Profile() {
           <Grid item xs={12}>
             <div className="headingText">
               <Typography variant="h2" sx={{ color: "#ffffff" }}>
-                Sacred Scarabs Profile Dashboard (COMING SOON!)
+                Sacred Scarabs Profile Dashboard
               </Typography>
             </div>
             {user && (
               <div>
-                <h1>Welcome user {username}</h1>
+                <h1>Welcome {username}</h1>
                 <div>
                   <label htmlFor="fileAvatar">Select Avatar</label>
                   <input
@@ -199,7 +199,7 @@ export default function Profile() {
                     onChange={(e) => setUserName(e.currentTarget.value)}
                   ></input>
                 </label>
-
+                <div>
                 <label htmlFor="email">
                   Email:
                   <input
@@ -209,7 +209,7 @@ export default function Profile() {
                     onChange={(e) => setEmail(e.currentTarget.value)}
                   ></input>
                 </label>
-
+                </div>
                 <div>
                   Remote / Physical Location
                   <Switch
@@ -218,7 +218,9 @@ export default function Profile() {
                     inputProps={{ "aria-label": "controlled" }}
                   />
                 </div>
-                <Button variant="contained" onClick={handleSave}>Save</Button>
+                <Button variant="contained" onClick={handleSave}>
+                  Save
+                </Button>
               </div>
             )}
             {user && showAddress && (
