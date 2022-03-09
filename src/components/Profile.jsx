@@ -4,6 +4,7 @@ import { useMoralis } from "react-moralis";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
 import Switch from "@mui/material/Switch";
+import Button from '@mui/material/Button';
 // import {statesList} from '../assets/states.js';
 
 export default function Profile() {
@@ -66,10 +67,10 @@ export default function Profile() {
   const [showAddress, setShowAddress] = useState(false);
   const [userAddress, setUserAddress] = useState({});
 
-   const [address1, setAddress1] = useState("");
-    const [address2, setAddress2] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
-   const [zipcode, setZipCode] = useState("");
+  const [zipcode, setZipCode] = useState("");
   const [state, setState] = useState("");
 
   const addressFormStyle = {
@@ -107,10 +108,10 @@ export default function Profile() {
         console.log(userAddressIn);
         setUserAddress(userAddressIn);
         console.log(userAddressIn.addr1);
-        setAddress1(userAddressIn.addr1)
-         setAddress2(userAddressIn.addr2);
-         setCity(userAddressIn.city);
-         setZipCode(userAddressIn.zipcode);
+        setAddress1(userAddressIn.addr1);
+        setAddress2(userAddressIn.addr2);
+        setCity(userAddressIn.city);
+        setZipCode(userAddressIn.zipcode);
         setState(userAddressIn.state);
       }
     }
@@ -122,7 +123,11 @@ export default function Profile() {
   }
   const makeStatesList = () => {
     return (
-      <select name="state" value={state} onChange={(e) => setState(e.target.value)}>
+      <select
+        name="state"
+        value={state}
+        onChange={(e) => setState(e.target.value)}
+      >
         {statesList.map((s) => (
           <option key={s}>{s}</option>
         ))}
@@ -154,16 +159,10 @@ export default function Profile() {
         addr2: address2,
         city: city,
         state: state,
-        zipcode: zipcode
-      }
+        zipcode: zipcode,
+      },
     });
   };
-  // const updateAddress = () => {
-
-  //   // UPDATE for address to save it
-  //   // save remote and address
-  //   console.log('Clicked on update address')
-  // }
 
   return (
     <div>
@@ -210,7 +209,7 @@ export default function Profile() {
                     onChange={(e) => setEmail(e.currentTarget.value)}
                   ></input>
                 </label>
-                <button onClick={handleSave}>Save</button>
+
                 <div>
                   Remote / Physical Location
                   <Switch
@@ -219,6 +218,7 @@ export default function Profile() {
                     inputProps={{ "aria-label": "controlled" }}
                   />
                 </div>
+                <Button variant="contained" onClick={handleSave}>Save</Button>
               </div>
             )}
             {user && showAddress && (
@@ -228,19 +228,35 @@ export default function Profile() {
                     <label style={individualStyle} htmlFor="address1">
                       {" "}
                       Address 1:
-                      <input type="text" name="address1"  onChange={(e) => setAddress1(e.target.value)}value={address1} placeholder={address1} ></input>
+                      <input
+                        type="text"
+                        name="address1"
+                        onChange={(e) => setAddress1(e.target.value)}
+                        value={address1}
+                        placeholder={address1}
+                      ></input>
                     </label>
                   </div>
                   <div>
                     <label style={individualStyle} htmlFor="address2">
                       Address 2:
-                      <input type="text" name="address2" value={address2} onChange={(e) => setAddress2(e.target.value)} ></input>
+                      <input
+                        type="text"
+                        name="address2"
+                        value={address2}
+                        onChange={(e) => setAddress2(e.target.value)}
+                      ></input>
                     </label>
                   </div>
                   <div>
                     <label style={individualStyle} htmlFor="city">
                       City:
-                      <input type="text" name="city" value={city} onChange={(e) => setCity(e.target.value)}></input>
+                      <input
+                        type="text"
+                        name="city"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                      ></input>
                     </label>
                   </div>
                   <label style={individualStyle} htmlFor="state">
@@ -249,7 +265,13 @@ export default function Profile() {
                   </label>
                   <label style={individualStyle} htmlFor="zipcode">
                     ZipCode:
-                    <input type="number" name="zipcode" value={zipcode} onChange={(e) => setZipCode(e.target.value)}max={5}></input>
+                    <input
+                      type="number"
+                      name="zipcode"
+                      value={zipcode}
+                      onChange={(e) => setZipCode(e.target.value)}
+                      max={5}
+                    ></input>
                   </label>
 
                   <button onClick={TestSubmit}>Update Address</button>
