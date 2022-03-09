@@ -7,6 +7,13 @@ import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
 // import {statesList} from '../assets/states.js';
 
+
+
+import TextField from "@material-ui/core/TextField";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+
 export default function Profile() {
   const statesList = [
     "AL",
@@ -171,12 +178,23 @@ export default function Profile() {
           <Grid item xs={12}>
             <div className="headingText">
               <Typography variant="h2" sx={{ color: "#ffffff" }}>
-                Sacred Scarabs Profile Dashboard
+                Welcome {username}
               </Typography>
             </div>
             {user && (
               <div>
-                <h1>Welcome {username}</h1>
+                <FormControl>
+                  <FormLabel>Usename:</FormLabel>
+                  <TextField
+                    onChange={(e) => setUserName(e.currentTarget.value)}
+                    value={username}
+                  />
+                   <FormLabel>Email:</FormLabel>
+                   <TextField
+                    onChange={(e) => setEmail(e.currentTarget.value)}
+                    value={email}
+                  />
+                </FormControl>
                 <div>
                   <label htmlFor="fileAvatar">Select Avatar</label>
                   <input
@@ -189,26 +207,6 @@ export default function Profile() {
                     src={user?.attributes.avatarFile._url}
                     style={{ width: "200px", height: "200px" }}
                   ></img>
-                </div>
-                <label htmlFor="username">
-                  UserName:
-                  <input
-                    type="text"
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUserName(e.currentTarget.value)}
-                  ></input>
-                </label>
-                <div>
-                <label htmlFor="email">
-                  Email:
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.currentTarget.value)}
-                  ></input>
-                </label>
                 </div>
                 <div>
                   Remote / Physical Location
