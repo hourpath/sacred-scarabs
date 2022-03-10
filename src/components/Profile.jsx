@@ -110,6 +110,8 @@ export default function Profile() {
       const userAvatar = user?.attributes?.avatar?._url;
       if (userAvatar) {
         setAvatarFile(userAvatar);
+      }else{
+        //SET DEFAULT PIC?
       }
       const userWebsiteIn = user?.attributes.websiteURL;
       if (userWebsiteIn) {

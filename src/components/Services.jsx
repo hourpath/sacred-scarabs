@@ -27,8 +27,10 @@ export default function Services() {
 useEffect(() => {
     if (user) {
         const servicesOfferedIn = user?.attributes.servicesOffered;
-        console.log(servicesOfferedIn);
-        setServicesOffered(servicesOfferedIn);
+        if(servicesOfferedIn){
+          setServicesOffered(servicesOfferedIn);
+        }
+        
 // {
 //     name: 'TestService1',
 //     description: 'description1',
