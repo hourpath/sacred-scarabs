@@ -1,13 +1,14 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, InputLabel } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useMoralis } from "react-moralis";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
 import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
+import Avatar from '@mui/material/Avatar';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 // import {statesList} from '../assets/states.js';
-
-
 
 import TextField from "@material-ui/core/TextField";
 // import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -130,15 +131,19 @@ export default function Profile() {
   }
   const makeStatesList = () => {
     return (
-      <select
-        name="state"
+      <FormControl>
+      <InputLabel id='select-state'>State:</InputLabel>
+      <Select
+        labelId='select-state'
         value={state}
         onChange={(e) => setState(e.target.value)}
-      >
+        >
         {statesList.map((s) => (
-          <option key={s}>{s}</option>
-        ))}
-      </select>
+           <MenuItem value={s} key={s}>{s}</MenuItem>
+         ))}
+        
+      </Select>
+      </FormControl>
     );
   };
 
@@ -189,13 +194,17 @@ export default function Profile() {
                     onChange={(e) => setUserName(e.currentTarget.value)}
                     value={username}
                   />
-                   <FormLabel>Email:</FormLabel>
-                   <TextField
+                  <FormLabel>Email:</FormLabel>
+                  <TextField
                     onChange={(e) => setEmail(e.currentTarget.value)}
                     value={email}
                   />
                 </FormControl>
                 <div>
+                  <Avatar alt="profile Image" 
+                    src={user?.attributes.avatarFile._url} 
+                    sx={{ width: 200, height: 200 }}
+                  />
                   <label htmlFor="fileAvatar">Select Avatar</label>
                   <input
                     type="file"
@@ -203,10 +212,6 @@ export default function Profile() {
                     defaultValue=""
                     onChange={(e) => setAvatarFile(e.target.files[0])}
                   ></input>
-                  <img
-                    src={user?.attributes.avatarFile._url}
-                    style={{ width: "200px", height: "200px" }}
-                  ></img>
                 </div>
                 <div>
                   Remote / Physical Location
@@ -225,56 +230,47 @@ export default function Profile() {
               <div style={addressFormStyle}>
                 <form style={{ width: "100%" }}>
                   <div>
-                    <label style={individualStyle} htmlFor="address1">
-                      {" "}
-                      Address 1:
-                      <input
-                        type="text"
-                        name="address1"
-                        onChange={(e) => setAddress1(e.target.value)}
-                        value={address1}
-                        placeholder={address1}
-                      ></input>
-                    </label>
-                  </div>
-                  <div>
-                    <label style={individualStyle} htmlFor="address2">
-                      Address 2:
-                      <input
-                        type="text"
-                        name="address2"
-                        value={address2}
-                        onChange={(e) => setAddress2(e.target.value)}
-                      ></input>
-                    </label>
-                  </div>
-                  <div>
-                    <label style={individualStyle} htmlFor="city">
-                      City:
-                      <input
-                        type="text"
-                        name="city"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                      ></input>
-                    </label>
+                    <FormControl>
+                      <FormLabel>
+                        Address 1:
+                      </FormLabel>
+                      <TextField
+                          onChange={(e) => setAddress1(e.currentTarget.value)}
+                          value={address1}
+                        />
+                      <FormLabel>
+                        Address 2:
+                      </FormLabel>
+                      <TextField
+                          onChange={(e) => setAddress2(e.currentTarget.value)}
+                          value={address2}
+                        />
+                      <FormLabel>
+                        City:
+                      </FormLabel>
+                      <TextField
+                          onChange={(e) => setCity(e.currentTarget.value)}
+                          value={city}
+                        />
+                    </FormControl>
+                    
                   </div>
                   <label style={individualStyle} htmlFor="state">
-                    State:
                     {makeStatesList()}
                   </label>
-                  <label style={individualStyle} htmlFor="zipcode">
-                    ZipCode:
-                    <input
-                      type="number"
-                      name="zipcode"
-                      value={zipcode}
-                      onChange={(e) => setZipCode(e.target.value)}
-                      max={5}
-                    ></input>
-                  </label>
+                  <FormLabel>
+                        ZipCode:
+                      </FormLabel>
+                  <TextField 
+                  onChange={(e) => setZipCode(e.currentTarget.value)}
+                  value={zipcode}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
+                  />
 
-                  <button onClick={TestSubmit}>Update Address</button>
+                  <Button  variant="contained" onClick={TestSubmit}>
+                  Update Address
+                  </Button>
+                  
                 </form>
               </div>
             )}
