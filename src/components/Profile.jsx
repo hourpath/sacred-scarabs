@@ -75,7 +75,7 @@ export default function Profile() {
   const [showAddress, setShowAddress] = useState(false);
   const [userAddress, setUserAddress] = useState({});
   const [userWebsite, setUserWebsite] = useState("");
-  const [userBio, setUserBio] = useState('');
+  const [userBio, setUserBio] = useState("");
 
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
@@ -97,7 +97,6 @@ export default function Profile() {
 
   useEffect(() => {
     if (user) {
-
       setUserName(user.attributes.username);
       const userEmail = user.get("email");
       if (userEmail) {
@@ -105,7 +104,7 @@ export default function Profile() {
       }
 
       const userBioIn = user?.attributes.about;
-      if(userBioIn){
+      if (userBioIn) {
         setUserBio(userBioIn);
       }
       const userAvatar = user?.attributes?.avatar?._url;
@@ -205,13 +204,15 @@ export default function Profile() {
             </div>
             {user && (
               <div>
-                
                 <FormControl>
-                <FormLabel>About you :</FormLabel>
+                  <FormLabel >About you :</FormLabel>
                   <TextField
                     onChange={(e) => setUserBio(e.currentTarget.value)}
                     value={userBio}
-                    multiline rows={2} maxRows={6}
+                    multiline
+                    minRows={2}
+                    maxRows={6}
+                    style={{width:'100%'}}
                   />
                   <FormLabel>Usename:</FormLabel>
                   <TextField
