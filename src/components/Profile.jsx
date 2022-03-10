@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
 import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
-import Avatar from '@mui/material/Avatar';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import Avatar from "@mui/material/Avatar";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 // import {statesList} from '../assets/states.js';
+import Services from './Services';
 
 import TextField from "@material-ui/core/TextField";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
@@ -74,6 +74,7 @@ export default function Profile() {
   const [username, setUserName] = useState("");
   const [showAddress, setShowAddress] = useState(false);
   const [userAddress, setUserAddress] = useState({});
+  const [userWebsite, setUserWebsite] = useState('');
 
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
@@ -104,12 +105,18 @@ export default function Profile() {
       if (userAvatar) {
         setAvatarFile(userAvatar);
       }
+      const userWebsiteIn = user?.attributes.websiteURL;
+      if(userWebsiteIn){
+        setUserWebsite(userWebsiteIn);
+      }
+      
       console.log(user?.attributes);
       const showAddressIn = user?.attributes.showAddress;
       if (showAddressIn) {
         console.log(showAddressIn);
         setShowAddress(showAddressIn);
       }
+      
       const userAddressIn = user?.attributes.userAddress;
 
       if (userAddressIn) {
@@ -132,17 +139,18 @@ export default function Profile() {
   const makeStatesList = () => {
     return (
       <FormControl>
-      <InputLabel id='select-state'>State:</InputLabel>
-      <Select
-        labelId='select-state'
-        value={state}
-        onChange={(e) => setState(e.target.value)}
+        <InputLabel id="select-state">State:</InputLabel>
+        <Select
+          labelId="select-state"
+          value={state}
+          onChange={(e) => setState(e.target.value)}
         >
-        {statesList.map((s) => (
-           <MenuItem value={s} key={s}>{s}</MenuItem>
-         ))}
-        
-      </Select>
+          {statesList.map((s) => (
+            <MenuItem value={s} key={s}>
+              {s}
+            </MenuItem>
+          ))}
+        </Select>
       </FormControl>
     );
   };
@@ -159,6 +167,7 @@ export default function Profile() {
       email: email,
       avatarFile: profilePic,
       username: username,
+      websiteURL: userWebsite,
       showAddress: showAddress,
     });
   };
@@ -199,10 +208,16 @@ export default function Profile() {
                     onChange={(e) => setEmail(e.currentTarget.value)}
                     value={email}
                   />
+                  <FormLabel>Website URL:</FormLabel>
+                  <TextField
+                    onChange={(e) => setUserWebsite(e.currentTarget.value)}
+                    value={userWebsite}
+                  />
                 </FormControl>
                 <div>
-                  <Avatar alt="profile Image" 
-                    src={user?.attributes.avatarFile._url} 
+                  <Avatar
+                    alt="profile Image"
+                    src={user?.attributes.avatarFile._url}
                     sx={{ width: 200, height: 200 }}
                   />
                   <label htmlFor="fileAvatar">Select Avatar</label>
@@ -231,50 +246,42 @@ export default function Profile() {
                 <form style={{ width: "100%" }}>
                   <div>
                     <FormControl>
-                      <FormLabel>
-                        Address 1:
-                      </FormLabel>
+                      <FormLabel>Address 1:</FormLabel>
                       <TextField
-                          onChange={(e) => setAddress1(e.currentTarget.value)}
-                          value={address1}
-                        />
-                      <FormLabel>
-                        Address 2:
-                      </FormLabel>
+                        onChange={(e) => setAddress1(e.currentTarget.value)}
+                        value={address1}
+                      />
+                      <FormLabel>Address 2:</FormLabel>
                       <TextField
-                          onChange={(e) => setAddress2(e.currentTarget.value)}
-                          value={address2}
-                        />
-                      <FormLabel>
-                        City:
-                      </FormLabel>
+                        onChange={(e) => setAddress2(e.currentTarget.value)}
+                        value={address2}
+                      />
+                      <FormLabel>City:</FormLabel>
                       <TextField
-                          onChange={(e) => setCity(e.currentTarget.value)}
-                          value={city}
-                        />
+                        onChange={(e) => setCity(e.currentTarget.value)}
+                        value={city}
+                      />
                     </FormControl>
-                    
                   </div>
                   <label style={individualStyle} htmlFor="state">
                     {makeStatesList()}
                   </label>
-                  <FormLabel>
-                        ZipCode:
-                      </FormLabel>
-                  <TextField 
-                  onChange={(e) => setZipCode(e.currentTarget.value)}
-                  value={zipcode}
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
+                  <FormLabel>ZipCode:</FormLabel>
+                  <TextField
+                    onChange={(e) => setZipCode(e.currentTarget.value)}
+                    value={zipcode}
+                    inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                   />
 
-                  <Button  variant="contained" onClick={TestSubmit}>
-                  Update Address
+                  <Button variant="contained" onClick={TestSubmit}>
+                    Update Address
                   </Button>
-                  
                 </form>
               </div>
             )}
           </Grid>
+          <Services/>
+
         </Grid>
       </Container>
     </div>

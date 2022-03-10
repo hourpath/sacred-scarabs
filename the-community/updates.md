@@ -15,7 +15,7 @@ Trello Established for Project Management and Bug Ticketing\
 Figma Established for Project Mocks and Design Tools
 
 **3/9/2022**\
-**Profile Page  -** Functionality for profile page in place. Adding additional features and styling.\
+**Profile Page -** Functionality for profile page in place. Adding additional features and styling.\
 User data successfully saving and retrieving.\
 Toggle for local or remote service provider added\
 Address fields display if local service provider
