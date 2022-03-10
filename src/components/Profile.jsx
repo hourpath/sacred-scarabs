@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 // import {statesList} from '../assets/states.js';
-import Services from './Services';
+import Services from "./Services";
 
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
@@ -74,7 +74,8 @@ export default function Profile() {
   const [username, setUserName] = useState("");
   const [showAddress, setShowAddress] = useState(false);
   const [userAddress, setUserAddress] = useState({});
-  const [userWebsite, setUserWebsite] = useState('');
+  const [userWebsite, setUserWebsite] = useState("");
+  const [userBio, setUserBio] = useState('');
 
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
@@ -96,27 +97,33 @@ export default function Profile() {
 
   useEffect(() => {
     if (user) {
+
       setUserName(user.attributes.username);
       const userEmail = user.get("email");
       if (userEmail) {
         setEmail(userEmail);
+      }
+
+      const userBioIn = user?.attributes.about;
+      if(userBioIn){
+        setUserBio(userBioIn);
       }
       const userAvatar = user?.attributes?.avatar?._url;
       if (userAvatar) {
         setAvatarFile(userAvatar);
       }
       const userWebsiteIn = user?.attributes.websiteURL;
-      if(userWebsiteIn){
+      if (userWebsiteIn) {
         setUserWebsite(userWebsiteIn);
       }
-      
+
       console.log(user?.attributes);
       const showAddressIn = user?.attributes.showAddress;
       if (showAddressIn) {
         console.log(showAddressIn);
         setShowAddress(showAddressIn);
       }
-      
+
       const userAddressIn = user?.attributes.userAddress;
 
       if (userAddressIn) {
@@ -164,6 +171,7 @@ export default function Profile() {
     const profilePic = new Moralis.File(avatarFile.name, avatarFile);
 
     setUserData({
+      about: userBio,
       email: email,
       avatarFile: profilePic,
       username: username,
@@ -197,7 +205,14 @@ export default function Profile() {
             </div>
             {user && (
               <div>
+                
                 <FormControl>
+                <FormLabel>About you :</FormLabel>
+                  <TextField
+                    onChange={(e) => setUserBio(e.currentTarget.value)}
+                    value={userBio}
+                    multiline rows={2} maxRows={6}
+                  />
                   <FormLabel>Usename:</FormLabel>
                   <TextField
                     onChange={(e) => setUserName(e.currentTarget.value)}
@@ -280,8 +295,7 @@ export default function Profile() {
               </div>
             )}
           </Grid>
-          <Services/>
-
+          <Services />
         </Grid>
       </Container>
     </div>
