@@ -86,6 +86,9 @@ function NFTBalance() {
       (value - 1) * NUM_PER_PAGE,
       value * NUM_PER_PAGE,
     );
+    if(NFTBalances){
+      console.log(NFTBalances.result)
+    }
     return (
       <Skeleton loading={!NFTBalances?.result}>
         {NFTBalances?.result &&
@@ -127,7 +130,7 @@ function NFTBalance() {
                 }
                 key={index}
               >
-                <Meta title={nft.name} description={nft.token_address} />
+                <Meta title={nft.metadata ?  nft.metadata.name: nft.name} description={nft.token_address} />
               </Card>
             );
           })}

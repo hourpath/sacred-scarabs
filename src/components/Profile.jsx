@@ -110,7 +110,7 @@ export default function Profile() {
       const userAvatar = user?.attributes?.avatar?._url;
       if (userAvatar) {
         setAvatarFile(userAvatar);
-      }else{
+      } else {
         //SET DEFAULT PIC?
       }
       const userWebsiteIn = user?.attributes.websiteURL;
@@ -207,14 +207,14 @@ export default function Profile() {
             {user && (
               <div>
                 <FormControl>
-                  <FormLabel >About you :</FormLabel>
+                  <FormLabel>About you :</FormLabel>
                   <TextField
                     onChange={(e) => setUserBio(e.currentTarget.value)}
                     value={userBio}
                     multiline
                     minRows={2}
                     maxRows={6}
-                    style={{width:'100%'}}
+                    style={{ width: "100%" }}
                   />
                   <FormLabel>Usename:</FormLabel>
                   <TextField
