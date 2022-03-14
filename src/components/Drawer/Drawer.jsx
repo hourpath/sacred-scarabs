@@ -19,7 +19,7 @@ import NFTBalance from "components/NFTBalance";
 import HealingNetwork from "components/HealingNetwork";
 import NFTMarket from "components/NFTMarket";
 import NFTStaking from "components/NFTStaking";
-import DEX from 'components/DEX/DEX';
+import DEX from "components/DEX/DEX";
 
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -154,7 +154,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+export default function MiniDrawer(avatar) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -183,7 +183,7 @@ export default function MiniDrawer() {
       { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon", id: 1 },
       { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon", id: 2 },
       { name: "My Projects", path: "/my-projects", icon: "WorkIcon", id: 3 },
-      {name: "DEX", path:'/DEX', icon:'WorkIcon', id: 4}
+      { name: "DEX", path: "/DEX", icon: "WorkIcon", id: 4 },
     ];
   } else {
     topNavRoutes = [
@@ -233,7 +233,7 @@ export default function MiniDrawer() {
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
                       alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
+                      src={avatar.avatar}
                     />
                   </IconButton>
                 </Tooltip>
@@ -463,8 +463,8 @@ export default function MiniDrawer() {
             <Route path="/erc20balance">
               <ERC20Balance />
             </Route>
-            <Route path='/DEX'>
-              <DEX  />
+            <Route path="/DEX">
+              <DEX />
             </Route>
             <Route path="/">
               <Redirect to="/home" />
