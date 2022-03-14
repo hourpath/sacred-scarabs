@@ -1,6 +1,6 @@
 import { Container, Grid, InputLabel } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { useMoralis } from "react-moralis";
+import { useMoralis, useNFTBalances } from "react-moralis";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
 import Switch from "@mui/material/Switch";
@@ -15,7 +15,10 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
+
+
 export default function Profile() {
+  const SACRED_SCARABS_ADDRESS="0x2953399124f0cbb46d2cbacd8a89cf0599974963";
   const statesList = [
     "AL",
     "AK",
@@ -77,11 +80,15 @@ export default function Profile() {
   const [userWebsite, setUserWebsite] = useState("");
   const [userBio, setUserBio] = useState("");
 
+
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
   const [zipcode, setZipCode] = useState("");
   const [state, setState] = useState("");
+  const [sacredNFTHoldings, setSacredNFTHoldings] = useState("");
+  const { data: NFTBalances } = useNFTBalances();
+  
 
   const addressFormStyle = {
     textAlign: "center",
@@ -95,12 +102,26 @@ export default function Profile() {
     width: "100%",
   };
 
+
+
   useEffect(() => {
+
     if (user) {
       setUserName(user.attributes.username);
       const userEmail = user.get("email");
       if (userEmail) {
         setEmail(userEmail);
+      }
+      if(NFTBalances?.result){
+        //Scarabs
+        let numHoldings = 0;
+        NFTBalances.result.forEach((e) =>{
+          //console.log(e);
+          if(e.token_address == SACRED_SCARABS_ADDRESS){
+            numHoldings++;
+            setSacredNFTHoldings(numHoldings);
+          }
+        })
       }
 
       const userBioIn = user?.attributes.about;
@@ -121,16 +142,14 @@ export default function Profile() {
       console.log(user?.attributes);
       const showAddressIn = user?.attributes.showAddress;
       if (showAddressIn) {
-        console.log(showAddressIn);
+
         setShowAddress(showAddressIn);
       }
 
       const userAddressIn = user?.attributes.userAddress;
 
       if (userAddressIn) {
-        console.log(userAddressIn);
         setUserAddress(userAddressIn);
-        console.log(userAddressIn.addr1);
         setAddress1(userAddressIn.addr1);
         setAddress2(userAddressIn.addr2);
         setCity(userAddressIn.city);
@@ -138,7 +157,7 @@ export default function Profile() {
         setState(userAddressIn.state);
       }
     }
-  }, [user]);
+  }, [user, NFTBalances?.result]);
 
   if (!user) {
     //REDIRECT TO HOME?
@@ -203,6 +222,7 @@ export default function Profile() {
               <Typography variant="h2" sx={{ color: "#ffffff" }}>
                 Welcome {username}
               </Typography>
+              <h3>Sacred Holdings: {sacredNFTHoldings}</h3>
             </div>
             {user && (
               <div>
@@ -298,7 +318,9 @@ export default function Profile() {
               </div>
             )}
           </Grid>
-          <Services />
+          {sacredNFTHoldings >=1 ? <Services/> : <h3>Purchase a sacred NFT to get access to services</h3> }
+          
+          
         </Grid>
       </Container>
     </div>
