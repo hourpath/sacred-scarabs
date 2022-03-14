@@ -19,6 +19,8 @@ import NFTBalance from "components/NFTBalance";
 import HealingNetwork from "components/HealingNetwork";
 import NFTMarket from "components/NFTMarket";
 import NFTStaking from "components/NFTStaking";
+import DEX from 'components/DEX/DEX';
+
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -181,6 +183,7 @@ export default function MiniDrawer() {
       { name: "NFT Minting", path: "/dashboard", icon: "DashboardIcon", id: 1 },
       { name: "My NFTs", path: "/nftBalance", icon: "PaletteIcon", id: 2 },
       { name: "My Projects", path: "/my-projects", icon: "WorkIcon", id: 3 },
+      {name: "DEX", path:'/DEX', icon:'WorkIcon', id: 4}
     ];
   } else {
     topNavRoutes = [
@@ -459,6 +462,9 @@ export default function MiniDrawer() {
             </Route>
             <Route path="/erc20balance">
               <ERC20Balance />
+            </Route>
+            <Route path='/DEX'>
+              <DEX  />
             </Route>
             <Route path="/">
               <Redirect to="/home" />

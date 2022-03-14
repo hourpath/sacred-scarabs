@@ -15,10 +15,8 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-
-
 export default function Profile() {
-  const SACRED_SCARABS_ADDRESS="0x2953399124f0cbb46d2cbacd8a89cf0599974963";
+  const SACRED_SCARABS_ADDRESS = "0x2953399124f0cbb46d2cbacd8a89cf0599974963";
   const statesList = [
     "AL",
     "AK",
@@ -80,7 +78,6 @@ export default function Profile() {
   const [userWebsite, setUserWebsite] = useState("");
   const [userBio, setUserBio] = useState("");
 
-
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
@@ -88,7 +85,6 @@ export default function Profile() {
   const [state, setState] = useState("");
   const [sacredNFTHoldings, setSacredNFTHoldings] = useState("");
   const { data: NFTBalances } = useNFTBalances();
-  
 
   const addressFormStyle = {
     textAlign: "center",
@@ -102,26 +98,23 @@ export default function Profile() {
     width: "100%",
   };
 
-
-
   useEffect(() => {
-
     if (user) {
       setUserName(user.attributes.username);
       const userEmail = user.get("email");
       if (userEmail) {
         setEmail(userEmail);
       }
-      if(NFTBalances?.result){
+      if (NFTBalances?.result) {
         //Scarabs
         let numHoldings = 0;
-        NFTBalances.result.forEach((e) =>{
-          //console.log(e);
-          if(e.token_address == SACRED_SCARABS_ADDRESS){
+        NFTBalances.result.forEach((e) => {
+          console.log(e);
+          if (e.token_address == SACRED_SCARABS_ADDRESS) {
             numHoldings++;
-            setSacredNFTHoldings(numHoldings);
           }
-        })
+        });
+        setSacredNFTHoldings(numHoldings);
       }
 
       const userBioIn = user?.attributes.about;
@@ -142,7 +135,6 @@ export default function Profile() {
       console.log(user?.attributes);
       const showAddressIn = user?.attributes.showAddress;
       if (showAddressIn) {
-
         setShowAddress(showAddressIn);
       }
 
@@ -318,9 +310,11 @@ export default function Profile() {
               </div>
             )}
           </Grid>
-          {sacredNFTHoldings >=1 ? <Services/> : <h3>Purchase a sacred NFT to get access to services</h3> }
-          
-          
+          {sacredNFTHoldings >= 1 ? (
+            <Services />
+          ) : (
+            <h3>Purchase a sacred NFT to get access to services</h3>
+          )}
         </Grid>
       </Container>
     </div>
