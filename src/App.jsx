@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
 // import TokenPrice from "components/TokenPrice";
@@ -50,23 +50,28 @@ const App = () => {
     },
   });
 
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, user } =
-    useMoralis();
-    const [avatarFile, setAvatarFile] = useState("");
+  const {
+    isWeb3Enabled,
+    enableWeb3,
+    isAuthenticated,
+    isWeb3EnableLoading,
+    user,
+  } = useMoralis();
+  const [avatarFile, setAvatarFile] = useState("");
 
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
       enableWeb3({ provider: connectorId });
-      if(user){
-        const userAvatar = user?.attributes?.avatarFile._url;
-        if (userAvatar) {
-          setAvatarFile(userAvatar);
-        } else {
-          //SET DEFAULT PIC?
-          console.log('no user')
-        }
+    if (user) {
+      const userAvatar = user?.attributes?.avatarFile._url;
+      if (userAvatar) {
+        setAvatarFile(userAvatar);
+      } else {
+        //SET DEFAULT PIC?
+        console.log("no user");
       }
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled, user]);

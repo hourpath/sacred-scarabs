@@ -233,7 +233,7 @@ export default function MiniDrawer(avatar) {
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
                       alt="Remy Sharp"
-                      src={avatar.avatar}
+                      src={avatar ? avatar.avatar : "/static/images/avatar/2.jpg"}
                     />
                   </IconButton>
                 </Tooltip>
