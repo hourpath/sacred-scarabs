@@ -71,7 +71,7 @@ export default function Profile() {
   ];
   const { user, setUserData } = useMoralis();
   const [email, setEmail] = useState("");
-  const [avatarFile, setAvatarFile] = useState("");
+  const [avatarFile, setAvatarFile] = useState();
   const [username, setUserName] = useState("");
   const [showAddress, setShowAddress] = useState(false);
   const [userAddress, setUserAddress] = useState({});
@@ -85,6 +85,8 @@ export default function Profile() {
   const [state, setState] = useState("");
   const [sacredNFTHoldings, setSacredNFTHoldings] = useState("");
   const { data: NFTBalances } = useNFTBalances();
+  const [photoFile, setPhotoFile] = useState();
+  const [photoFileName, setPhotoFileName] = useState();
 
   const addressFormStyle = {
     textAlign: "center",
@@ -109,7 +111,6 @@ export default function Profile() {
         //Scarabs
         let numHoldings = 0;
         NFTBalances.result.forEach((e) => {
-          console.log(e);
           if (e.token_address == SACRED_SCARABS_ADDRESS) {
             numHoldings++;
           }
@@ -121,7 +122,8 @@ export default function Profile() {
       if (userBioIn) {
         setUserBio(userBioIn);
       }
-      const userAvatar = user?.attributes?.avatar?._url;
+      const userAvatar = user?.attributes?.avatarFile?._url;
+      console.log(userAvatar)
       if (userAvatar) {
         setAvatarFile(userAvatar);
       } else {
@@ -155,6 +157,14 @@ export default function Profile() {
     //REDIRECT TO HOME?
     return <h1>Please login</h1>;
   }
+
+  const onChangePhoto = (e) => {
+    setPhotoFile(e.target.files[0]);
+    setPhotoFileName(e.target.files[0].name);
+    console.log(e.target.files[0]);
+    setAvatarFile(URL.createObjectURL(e.target.files[0]))
+  }
+
   const makeStatesList = () => {
     return (
       <FormControl>
@@ -179,17 +189,35 @@ export default function Profile() {
     console.log(userAddress);
   };
 
-  const handleSave = () => {
-    const profilePic = new Moralis.File(avatarFile.name, avatarFile);
+  const handleSave = async () => {
+          const file = photoFile;
+      const name = photoFileName;
+      const profilePic = new Moralis.File(name, file);
+    if(photoFile){
 
-    setUserData({
-      about: userBio,
-      email: email,
-      avatarFile: profilePic,
-      username: username,
-      websiteURL: userWebsite,
-      showAddress: showAddress,
-    });
+      await setUserData({
+        about: userBio,
+        email: email,
+        avatarFile: profilePic,
+        username: username,
+        websiteURL: userWebsite,
+        showAddress: showAddress,
+      });
+      await user.save();
+      setAvatarFile(profilePic._url)
+    }else{
+      console.log('no file')
+      await setUserData({
+        about: userBio,
+        email: email,
+        username: username,
+        websiteURL: userWebsite,
+        showAddress: showAddress,
+      });
+    }
+
+
+    
   };
 
   const TestSubmit = (e) => {
@@ -247,7 +275,7 @@ export default function Profile() {
                 <div>
                   <Avatar
                     alt="profile Image"
-                    src={user?.attributes.avatarFile._url}
+                    src={avatarFile}
                     sx={{ width: 200, height: 200 }}
                   />
                   <label htmlFor="fileAvatar">Select Avatar</label>
@@ -255,7 +283,7 @@ export default function Profile() {
                     type="file"
                     id="fileAvatar"
                     defaultValue=""
-                    onChange={(e) => setAvatarFile(e.target.files[0])}
+                    onChange={onChangePhoto}
                   ></input>
                 </div>
                 <div>
