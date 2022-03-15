@@ -87,6 +87,7 @@ export default function Profile() {
   const { data: NFTBalances } = useNFTBalances();
   const [photoFile, setPhotoFile] = useState();
   const [photoFileName, setPhotoFileName] = useState();
+  const [isSaving, setIsSaving] = useState(false)
 
   const addressFormStyle = {
     textAlign: "center",
@@ -123,7 +124,7 @@ export default function Profile() {
         setUserBio(userBioIn);
       }
       const userAvatar = user?.attributes?.avatarFile?._url;
-      console.log(userAvatar)
+      console.log(userAvatar);
       if (userAvatar) {
         setAvatarFile(userAvatar);
       } else {
@@ -162,8 +163,8 @@ export default function Profile() {
     setPhotoFile(e.target.files[0]);
     setPhotoFileName(e.target.files[0].name);
     console.log(e.target.files[0]);
-    setAvatarFile(URL.createObjectURL(e.target.files[0]))
-  }
+    setAvatarFile(URL.createObjectURL(e.target.files[0]));
+  };
 
   const makeStatesList = () => {
     return (
@@ -190,11 +191,11 @@ export default function Profile() {
   };
 
   const handleSave = async () => {
-          const file = photoFile;
-      const name = photoFileName;
-      const profilePic = new Moralis.File(name, file);
-    if(photoFile){
-
+    setIsSaving(true);
+    const file = photoFile;
+    const name = photoFileName;
+    const profilePic = new Moralis.File(name, file);
+    if (photoFile) {
       await setUserData({
         about: userBio,
         email: email,
@@ -204,9 +205,9 @@ export default function Profile() {
         showAddress: showAddress,
       });
       await user.save();
-      setAvatarFile(profilePic._url)
-    }else{
-      console.log('no file')
+      setAvatarFile(profilePic._url);
+    } else {
+      console.log("no file");
       await setUserData({
         about: userBio,
         email: email,
@@ -216,8 +217,7 @@ export default function Profile() {
       });
     }
 
-
-    
+    setIsSaving(false);
   };
 
   const TestSubmit = (e) => {
@@ -297,6 +297,7 @@ export default function Profile() {
                 <Button variant="contained" onClick={handleSave}>
                   Save
                 </Button>
+                {isSaving && <h1>Saving</h1>}
               </div>
             )}
             {user && showAddress && (
