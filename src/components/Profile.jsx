@@ -14,6 +14,8 @@ import Services from "./Services";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 export default function Profile() {
   const SACRED_SCARABS_ADDRESS = "0x2953399124f0cbb46d2cbacd8a89cf0599974963";
@@ -87,7 +89,8 @@ export default function Profile() {
   const { data: NFTBalances } = useNFTBalances();
   const [photoFile, setPhotoFile] = useState();
   const [photoFileName, setPhotoFileName] = useState();
-  const [isSaving, setIsSaving] = useState(false)
+  const [isSaving, setIsSaving] = useState(false);
+  
 
   const addressFormStyle = {
     textAlign: "center",
@@ -162,7 +165,6 @@ export default function Profile() {
   const onChangePhoto = (e) => {
     setPhotoFile(e.target.files[0]);
     setPhotoFileName(e.target.files[0].name);
-    console.log(e.target.files[0]);
     setAvatarFile(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -249,6 +251,7 @@ export default function Profile() {
                 <FormControl>
                   <FormLabel>About you :</FormLabel>
                   <TextField
+                    variant="outlined"
                     onChange={(e) => setUserBio(e.currentTarget.value)}
                     value={userBio}
                     multiline
@@ -258,16 +261,19 @@ export default function Profile() {
                   />
                   <FormLabel>Usename:</FormLabel>
                   <TextField
+                    variant="outlined"
                     onChange={(e) => setUserName(e.currentTarget.value)}
                     value={username}
                   />
                   <FormLabel>Email:</FormLabel>
                   <TextField
+                    variant="outlined"
                     onChange={(e) => setEmail(e.currentTarget.value)}
                     value={email}
                   />
                   <FormLabel>Website URL:</FormLabel>
                   <TextField
+                    variant="outlined"
                     onChange={(e) => setUserWebsite(e.currentTarget.value)}
                     value={userWebsite}
                   />
@@ -278,13 +284,18 @@ export default function Profile() {
                     src={avatarFile}
                     sx={{ width: 200, height: 200 }}
                   />
-                  <label htmlFor="fileAvatar">Select Avatar</label>
-                  <input
-                    type="file"
-                    id="fileAvatar"
-                    defaultValue=""
-                    onChange={onChangePhoto}
-                  ></input>
+                      <Button
+                          variant="contained"
+                          component="label"
+                        >
+                          Upload File
+                          <input
+                          id='fileAvatar'
+                          onChange={onChangePhoto}
+                            type="file"
+                            hidden
+                          />
+                        </Button>
                 </div>
                 <div>
                   Remote / Physical Location
@@ -297,7 +308,7 @@ export default function Profile() {
                 <Button variant="contained" onClick={handleSave}>
                   Save
                 </Button>
-                {isSaving && <h1>Saving</h1>}
+                {isSaving && <CircularProgress />}
               </div>
             )}
             {user && showAddress && (

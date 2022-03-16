@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FormLabel from "@material-ui/core/FormLabel";
 import TextField from "@material-ui/core/TextField";
 import { useMoralis } from "react-moralis";
+import Button from "@mui/material/Button";
 
 // import Select from "@mui/material/Select";
 // import MenuItem from "@mui/material/MenuItem";
@@ -16,12 +17,7 @@ export default function Services() {
   const [servicePrice, setServicePrice] = useState("");
   const [servicesOffered, setServicesOffered] = useState([]);
   const { user, setUserData } = useMoralis();
-  // const servicesOffered = [
-  //     "BreathWork",
-  //     "Tarot Reading",
-  //     "Energy Healing",
-  //     "ETC",
-  //   ];
+
 
   useEffect(() => {
     if (user) {
@@ -43,6 +39,7 @@ export default function Services() {
       name: serviceName,
       description: serviceDescription,
       price: servicePrice,
+      id: servicesOffered.length + 1
     });
 
     setUserData({
@@ -54,6 +51,31 @@ export default function Services() {
     setServiceDescription("");
     setServicePrice("");
   };
+
+  const DeleteService = (e) => {
+    console.log(e.target.getAttribute('id'))
+      // filter by id and then reset userData for new array
+      let updatedServices = servicesOffered.filter(function(element){
+        if(element.id){
+          return element.id != e.target.id;
+        }
+        return true;
+        
+      })
+
+      setUserData({
+        servicesOffered: updatedServices
+      })
+
+      // Update in server 
+
+      setServicesOffered(updatedServices);
+  }
+
+
+
+
+
   const addServiceForm = () => {
     return (
       <div>
@@ -81,25 +103,6 @@ export default function Services() {
       </div>
     );
   };
-  //   const testServices = ["BreathWork", "ETC"];
-  //   const makeServicesList = () => {
-  //     return (
-  //       <FormControl>
-  //         <InputLabel id="select-service">Add Service:</InputLabel>
-  //         <Select
-  //           labelId="select-service"
-  //           value={selectedService}
-  //           onChange={(e) => setSelectedService(e.target.value)}
-  //         >
-  //           {servicesOffered.map((s) => (
-  //             <MenuItem value={s} key={s}>
-  //               {s}
-  //             </MenuItem>
-  //           ))}
-  //         </Select>
-  //       </FormControl>
-  //     );
-  //   };
   return (
     <div>
       <div>
@@ -113,11 +116,16 @@ export default function Services() {
                 <div>About: {s.description}</div>
 
                 <div>${s.price}</div>
+                <Button
+                id={s.id} 
+                variant='contained'
+                color='error'
+                onClick={DeleteService}>Delete Service</Button>
               </div>
             );
           })}
         <button onClick={() => setOnServiceToggle(!addServiceToggle)}>
-          Add Service
+          Add Service 
         </button>
 
         {addServiceToggle && addServiceForm()}
