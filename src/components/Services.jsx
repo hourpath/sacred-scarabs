@@ -17,7 +17,8 @@ export default function Services() {
   const [servicePrice, setServicePrice] = useState("");
   const [servicesOffered, setServicesOffered] = useState([]);
   const { user, setUserData } = useMoralis();
-
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleteId, setDeleteId] = useState();
 
   useEffect(() => {
     if (user) {
@@ -39,7 +40,7 @@ export default function Services() {
       name: serviceName,
       description: serviceDescription,
       price: servicePrice,
-      id: servicesOffered.length + 1
+      id: servicesOffered.length + 1,
     });
 
     setUserData({
@@ -52,29 +53,52 @@ export default function Services() {
     setServicePrice("");
   };
 
-  const DeleteService = (e) => {
-    console.log(e.target.getAttribute('id'))
-      // filter by id and then reset userData for new array
-      let updatedServices = servicesOffered.filter(function(element){
-        if(element.id){
-          return element.id != e.target.id;
-        }
-        return true;
-        
-      })
-
-      setUserData({
-        servicesOffered: updatedServices
-      })
-
-      // Update in server 
-
-      setServicesOffered(updatedServices);
+  const EditService = (e) => {
+    console.log(e.target.getAttribute("id"));
   }
 
+  const DeleteService = (e) => {
+    console.log(e.target.getAttribute("id"));
+    // filter by id and then reset userData for new array
+    let updatedServices = servicesOffered.filter(function (element) {
+      if (element.id) {
+        return element.id != e.target.id;
+      }
+      return true;
+    });
 
+    setUserData({
+      servicesOffered: updatedServices,
+    });
 
+    // Update in server
 
+    setServicesOffered(updatedServices);
+  };
+
+  const showConfirmDelete = (s) => {
+    return (
+      <div>
+      <Button
+      id={s.id}
+      variant="contained"
+      color="error"
+      onClick={DeleteService}
+    >
+      Yes, Delete
+    </Button>
+    <Button
+      id={s.id}
+      variant="outlined"
+      color="error"
+      onClick={() => {setConfirmDelete(!confirmDelete); setDeleteId(-1)}}
+    >
+      Cancel
+    </Button>
+      </div>
+
+    )
+  }
 
   const addServiceForm = () => {
     return (
@@ -116,16 +140,28 @@ export default function Services() {
                 <div>About: {s.description}</div>
 
                 <div>${s.price}</div>
+                {confirmDelete && s.id == deleteId? showConfirmDelete(s) : <Button
+                  id={s.id}
+                  variant="contained"
+                  color="error"
+                  onClick={() => {setConfirmDelete(!confirmDelete); setDeleteId(s.id)}}
+                >
+                  Delete
+                </Button>
+          }
+                
                 <Button
-                id={s.id} 
-                variant='contained'
-                color='error'
-                onClick={DeleteService}>Delete Service</Button>
+                  id={s.id}
+                  variant="contained"
+                  onClick={EditService}
+                >
+                  Edit
+                </Button>
               </div>
             );
           })}
         <button onClick={() => setOnServiceToggle(!addServiceToggle)}>
-          Add Service 
+          Add Service
         </button>
 
         {addServiceToggle && addServiceForm()}
