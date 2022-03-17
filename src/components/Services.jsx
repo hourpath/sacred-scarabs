@@ -51,7 +51,6 @@ export default function Services() {
     setServicePrice("");
   };
 
-
   const DeleteService = (e) => {
     console.log(e.target.getAttribute("id"));
     // filter by id and then reset userData for new array
@@ -130,7 +129,6 @@ export default function Services() {
         {servicesOffered.length >= 1 &&
           servicesOffered.map((s) => {
             return (
-              
               <div key={s.name}>
                 {s.id == editId && <div>Editing</div>}
                 <div>
@@ -155,7 +153,11 @@ export default function Services() {
                   </Button>
                 )}
 
-                <Button id={s.id} variant="contained" onClick={() => setEditId(s.id)}>
+                <Button
+                  id={s.id}
+                  variant="contained"
+                  onClick={() => setEditId(s.id)}
+                >
                   Edit
                 </Button>
               </div>

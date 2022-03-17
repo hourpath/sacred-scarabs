@@ -1,7 +1,7 @@
 import { Container, Grid, InputLabel } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useMoralis, useNFTBalances } from "react-moralis";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Moralis } from "moralis";
 import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
@@ -15,8 +15,10 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useVerifyMetadata } from "hooks/useVerifyMetadata";
 
 export default function Profile() {
+  const { verifyMetadata } = useVerifyMetadata();
   const SACRED_SCARABS_ADDRESS = "0x2953399124f0cbb46d2cbacd8a89cf0599974963";
   const statesList = [
     "AL",
@@ -85,10 +87,14 @@ export default function Profile() {
   const [zipcode, setZipCode] = useState("");
   const [state, setState] = useState("");
   const [sacredNFTHoldings, setSacredNFTHoldings] = useState("");
+  const [sacredSpiders, setSacredSpiders] = useState(0);
+  const [sacredSnakes, setSacredSnakes] = useState(0);
+  const [sacredScarabs, setSacredScarabs] = useState(0);
   const { data: NFTBalances } = useNFTBalances();
   const [photoFile, setPhotoFile] = useState();
   const [photoFileName, setPhotoFileName] = useState();
   const [isSaving, setIsSaving] = useState(false);
+  
 
   const addressFormStyle = {
     textAlign: "center",
@@ -102,6 +108,36 @@ export default function Profile() {
     width: "100%",
   };
 
+
+    const fetchMyNFTMetaData = useCallback(async (nfts) => {
+      let numHoldings = 0;
+      let numScarabs= 0;
+      let numSpiders = 0;
+      let numSnakes =0;
+      await nfts.forEach((e) => {
+
+        if (e.token_address == SACRED_SCARABS_ADDRESS) {
+          numHoldings++;
+        }
+        let nft =  verifyMetadata(e);
+        
+        if(nft.metadata?.name.includes('Scarabs')){
+          numScarabs++;
+        }else if(nft.metadata?.name.includes('Snakes')){
+          numSnakes++;
+        }else if(nft.metadata?.name.includes('Spiders')){
+          numSpiders++;
+        }
+      });
+      setSacredNFTHoldings(numHoldings);
+      setSacredSnakes(numSnakes);
+      setSacredSpiders(numSpiders);
+      setSacredScarabs(numScarabs);
+      
+
+      
+    }, [verifyMetadata])
+
   useEffect(() => {
     if (user) {
       setUserName(user.attributes.username);
@@ -111,13 +147,7 @@ export default function Profile() {
       }
       if (NFTBalances?.result) {
         //Scarabs
-        let numHoldings = 0;
-        NFTBalances.result.forEach((e) => {
-          if (e.token_address == SACRED_SCARABS_ADDRESS) {
-            numHoldings++;
-          }
-        });
-        setSacredNFTHoldings(numHoldings);
+          fetchMyNFTMetaData(NFTBalances.result);
       }
 
       const userBioIn = user?.attributes.about;
@@ -153,7 +183,7 @@ export default function Profile() {
         setState(userAddressIn.state);
       }
     }
-  }, [user, NFTBalances?.result]);
+  }, [user, NFTBalances?.result, fetchMyNFTMetaData]);
 
   if (!user) {
     //REDIRECT TO HOME?
@@ -242,7 +272,7 @@ export default function Profile() {
               <Typography variant="h2" sx={{ color: "#ffffff" }}>
                 Welcome {username}
               </Typography>
-              <h3>Sacred Holdings: {sacredNFTHoldings}</h3>
+              <h3>Sacred Holdings: {sacredNFTHoldings} Snakes:{sacredSnakes} Spiders: {sacredSpiders} Scarabs: {sacredScarabs}</h3>
             </div>
             {user && (
               <div>
