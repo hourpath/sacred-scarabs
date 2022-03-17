@@ -5,9 +5,6 @@ import TextField from "@material-ui/core/TextField";
 import { useMoralis } from "react-moralis";
 import Button from "@mui/material/Button";
 
-// import Select from "@mui/material/Select";
-// import MenuItem from "@mui/material/MenuItem";
-// import { InputLabel } from "@mui/material";
 export default function Services() {
   //   const [selectedService, setSelectedService] = useState("");
   const [addServiceToggle, setOnServiceToggle] = useState(false);
@@ -19,6 +16,7 @@ export default function Services() {
   const { user, setUserData } = useMoralis();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [deleteId, setDeleteId] = useState();
+  const [editId, setEditId] = useState();
 
   useEffect(() => {
     if (user) {
@@ -53,9 +51,6 @@ export default function Services() {
     setServicePrice("");
   };
 
-  const EditService = (e) => {
-    console.log(e.target.getAttribute("id"));
-  }
 
   const DeleteService = (e) => {
     console.log(e.target.getAttribute("id"));
@@ -79,26 +74,28 @@ export default function Services() {
   const showConfirmDelete = (s) => {
     return (
       <div>
-      <Button
-      id={s.id}
-      variant="contained"
-      color="error"
-      onClick={DeleteService}
-    >
-      Yes, Delete
-    </Button>
-    <Button
-      id={s.id}
-      variant="outlined"
-      color="error"
-      onClick={() => {setConfirmDelete(!confirmDelete); setDeleteId(-1)}}
-    >
-      Cancel
-    </Button>
+        <Button
+          id={s.id}
+          variant="contained"
+          color="error"
+          onClick={DeleteService}
+        >
+          Yes, Delete
+        </Button>
+        <Button
+          id={s.id}
+          variant="outlined"
+          color="error"
+          onClick={() => {
+            setConfirmDelete(!confirmDelete);
+            setDeleteId(-1);
+          }}
+        >
+          Cancel
+        </Button>
       </div>
-
-    )
-  }
+    );
+  };
 
   const addServiceForm = () => {
     return (
@@ -133,28 +130,32 @@ export default function Services() {
         {servicesOffered.length >= 1 &&
           servicesOffered.map((s) => {
             return (
+              
               <div key={s.name}>
+                {s.id == editId && <div>Editing</div>}
                 <div>
                   <h1>{s.name} </h1>
                 </div>
                 <div>About: {s.description}</div>
 
                 <div>${s.price}</div>
-                {confirmDelete && s.id == deleteId? showConfirmDelete(s) : <Button
-                  id={s.id}
-                  variant="contained"
-                  color="error"
-                  onClick={() => {setConfirmDelete(!confirmDelete); setDeleteId(s.id)}}
-                >
-                  Delete
-                </Button>
-          }
-                
-                <Button
-                  id={s.id}
-                  variant="contained"
-                  onClick={EditService}
-                >
+                {confirmDelete && s.id == deleteId ? (
+                  showConfirmDelete(s)
+                ) : (
+                  <Button
+                    id={s.id}
+                    variant="contained"
+                    color="error"
+                    onClick={() => {
+                      setConfirmDelete(!confirmDelete);
+                      setDeleteId(s.id);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                )}
+
+                <Button id={s.id} variant="contained" onClick={() => setEditId(s.id)}>
                   Edit
                 </Button>
               </div>
