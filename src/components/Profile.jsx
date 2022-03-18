@@ -94,7 +94,6 @@ export default function Profile() {
   const [photoFile, setPhotoFile] = useState();
   const [photoFileName, setPhotoFileName] = useState();
   const [isSaving, setIsSaving] = useState(false);
-  
 
   const addressFormStyle = {
     textAlign: "center",
@@ -108,24 +107,23 @@ export default function Profile() {
     width: "100%",
   };
 
-
-    const fetchMyNFTMetaData = useCallback(async (nfts) => {
+  const fetchMyNFTMetaData = useCallback(
+    async (nfts) => {
       let numHoldings = 0;
-      let numScarabs= 0;
+      let numScarabs = 0;
       let numSpiders = 0;
-      let numSnakes =0;
+      let numSnakes = 0;
       await nfts.forEach((e) => {
-
         if (e.token_address == SACRED_SCARABS_ADDRESS) {
           numHoldings++;
         }
-        let nft =  verifyMetadata(e);
-        
-        if(nft.metadata?.name.includes('Scarabs')){
+        let nft = verifyMetadata(e);
+
+        if (nft.metadata?.name.includes("Scarabs")) {
           numScarabs++;
-        }else if(nft.metadata?.name.includes('Snakes')){
+        } else if (nft.metadata?.name.includes("Snakes")) {
           numSnakes++;
-        }else if(nft.metadata?.name.includes('Spiders')){
+        } else if (nft.metadata?.name.includes("Spiders")) {
           numSpiders++;
         }
       });
@@ -133,10 +131,9 @@ export default function Profile() {
       setSacredSnakes(numSnakes);
       setSacredSpiders(numSpiders);
       setSacredScarabs(numScarabs);
-      
-
-      
-    }, [verifyMetadata])
+    },
+    [verifyMetadata],
+  );
 
   useEffect(() => {
     if (user) {
@@ -147,7 +144,7 @@ export default function Profile() {
       }
       if (NFTBalances?.result) {
         //Scarabs
-          fetchMyNFTMetaData(NFTBalances.result);
+        fetchMyNFTMetaData(NFTBalances.result);
       }
 
       const userBioIn = user?.attributes.about;
@@ -272,8 +269,13 @@ export default function Profile() {
               <Typography variant="h2" sx={{ color: "#ffffff" }}>
                 Welcome {username}
               </Typography>
-              <h3>Sacred Holdings: {sacredNFTHoldings} Snakes:{sacredSnakes} Spiders: {sacredSpiders} Scarabs: {sacredScarabs}</h3>
+              <h3>
+                Sacred Holdings: {sacredNFTHoldings} Snakes:{sacredSnakes}{" "}
+                Spiders: {sacredSpiders} Scarabs: {sacredScarabs}
+              </h3>
             </div>
+            </Grid>
+            <Grid item xs={6}>
             {user && (
               <div>
                 <FormControl>
@@ -306,22 +308,7 @@ export default function Profile() {
                     value={userWebsite}
                   />
                 </FormControl>
-                <div>
-                  <Avatar
-                    alt="profile Image"
-                    src={avatarFile}
-                    sx={{ width: 200, height: 200 }}
-                  />
-                  <Button variant="contained" component="label">
-                    Upload File
-                    <input
-                      id="fileAvatar"
-                      onChange={onChangePhoto}
-                      type="file"
-                      hidden
-                    />
-                  </Button>
-                </div>
+
                 <div>
                   Remote / Physical Location
                   <Switch
@@ -374,12 +361,31 @@ export default function Profile() {
                 </form>
               </div>
             )}
-          </Grid>
-          {sacredNFTHoldings >= 1 ? (
+                      {sacredNFTHoldings >= 1 ? (
             <Services />
           ) : (
             <h3>Purchase a sacred NFT to get access to services</h3>
           )}
+          </Grid>
+          <Grid item xs={6}>
+          <div>
+                  <Avatar
+                    alt="profile Image"
+                    src={avatarFile}
+                    sx={{ width: 200, height: 200 }}
+                  />
+                  <Button variant="contained" component="label">
+                    Upload File
+                    <input
+                      id="fileAvatar"
+                      onChange={onChangePhoto}
+                      type="file"
+                      hidden
+                    />
+                  </Button>
+                </div>
+          </Grid>
+
         </Grid>
       </Container>
     </div>

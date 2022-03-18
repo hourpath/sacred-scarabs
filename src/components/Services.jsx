@@ -24,12 +24,6 @@ export default function Services() {
       if (servicesOfferedIn) {
         setServicesOffered(servicesOfferedIn);
       }
-
-      // {
-      //     name: 'TestService1',
-      //     description: 'description1',
-      //     price: '10'
-      // }
     }
   }, [user]);
 
