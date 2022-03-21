@@ -1,0 +1,2 @@
+(this["webpackJsonpsacred-scarabs"]=this["webpackJsonpsacred-scarabs"]||[]).push([[12],{1796:function(n,c){},1855:function(n,c){},1866:function(n,c){},1883:function(n,c){},1892:function(n,c){},1894:function(n,c){}}]);
+//# sourceMappingURL=12.0b52c3f0.chunk.js.map
