@@ -64,11 +64,11 @@ const App = () => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
       enableWeb3({ provider: connectorId });
     if (user) {
-      const userAvatar = user?.attributes?.avatarFile._url;
+      const userAvatar = user?.attributes?.avatarFile?._url;
       if (userAvatar) {
         setAvatarFile(userAvatar);
       } else {
-        setAvatarFile('/static/images/avatar/2.jpg');
+        setAvatarFile("/static/images/avatar/2.jpg");
         //SET DEFAULT PIC?
         console.log("no user");
       }
