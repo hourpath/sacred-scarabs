@@ -94,6 +94,8 @@ export default function Profile() {
   const [photoFile, setPhotoFile] = useState();
   const [photoFileName, setPhotoFileName] = useState();
   const [isSaving, setIsSaving] = useState(false);
+  const [avatarFilePreview, setAvatarPreview] = useState();
+  const [showPreview, setShowPreview] = useState(false);
 
   const addressFormStyle = {
     textAlign: "center",
@@ -187,10 +189,17 @@ export default function Profile() {
     return <h1>Please login</h1>;
   }
 
+
+
+
   const onChangePhoto = (e) => {
+    
+    console.log('changed')
     setPhotoFile(e.target.files[0]);
     setPhotoFileName(e.target.files[0].name);
-    setAvatarFile(URL.createObjectURL(e.target.files[0]));
+    setShowPreview(true);
+    setAvatarPreview(URL.createObjectURL(e.target.files[0]));
+    // setAvatarPreview(URL.createObjectURL(e.target.files[0]));
   };
 
   const makeStatesList = () => {
@@ -232,7 +241,6 @@ export default function Profile() {
         showAddress: showAddress,
       });
       await user.save();
-      setAvatarFile(profilePic._url);
     } else {
       console.log("no file");
       await setUserData({
@@ -243,7 +251,8 @@ export default function Profile() {
         showAddress: showAddress,
       });
     }
-
+    setAvatarFile(profilePic._url);
+    setShowPreview(false);
     setIsSaving(false);
   };
 
@@ -274,8 +283,8 @@ export default function Profile() {
                 Spiders: {sacredSpiders} Scarabs: {sacredScarabs}
               </h3>
             </div>
-            </Grid>
-            <Grid item xs={6}>
+          </Grid>
+          <Grid item xs={6}>
             {user && (
               <div>
                 <FormControl>
@@ -361,31 +370,30 @@ export default function Profile() {
                 </form>
               </div>
             )}
-                      {sacredNFTHoldings >= 1 ? (
-            <Services />
-          ) : (
-            <h3>Purchase a sacred NFT to get access to services</h3>
-          )}
+            {sacredNFTHoldings >= 1 ? (
+              <Services />
+            ) : (
+              <h3>Purchase a sacred NFT to get access to services</h3>
+            )}
           </Grid>
           <Grid item xs={6}>
-          <div>
-                  <Avatar
-                    alt="profile Image"
-                    src={avatarFile}
-                    sx={{ width: 200, height: 200 }}
-                  />
-                  <Button variant="contained" component="label">
-                    Upload File
-                    <input
-                      id="fileAvatar"
-                      onChange={onChangePhoto}
-                      type="file"
-                      hidden
-                    />
-                  </Button>
-                </div>
+            <div>
+              <Avatar
+                alt="profile Image"
+                src={showPreview ? avatarFilePreview : avatarFile}
+                sx={{ width: 200, height: 200 }}
+              />
+              <Button variant="contained" component="label">
+                Upload File
+                <input
+                  id="fileAvatar"
+                  onChange={onChangePhoto}
+                  type="file"
+                  hidden
+                />
+              </Button>
+            </div>
           </Grid>
-
         </Grid>
       </Container>
     </div>
