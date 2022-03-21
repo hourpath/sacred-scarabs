@@ -189,17 +189,11 @@ export default function Profile() {
     return <h1>Please login</h1>;
   }
 
-
-
-
   const onChangePhoto = (e) => {
-    
-    console.log('changed')
     setPhotoFile(e.target.files[0]);
     setPhotoFileName(e.target.files[0].name);
     setShowPreview(true);
     setAvatarPreview(URL.createObjectURL(e.target.files[0]));
-    // setAvatarPreview(URL.createObjectURL(e.target.files[0]));
   };
 
   const makeStatesList = () => {
