@@ -68,6 +68,7 @@ const App = () => {
       if (userAvatar) {
         setAvatarFile(userAvatar);
       } else {
+        setAvatarFile('/static/images/avatar/2.jpg');
         //SET DEFAULT PIC?
         console.log("no user");
       }

@@ -28,6 +28,7 @@ export default function Services() {
   }, [user]);
 
   const handleSaveService = () => {
+    console.log(servicesOffered.length)
     servicesOffered.push({
       name: serviceName,
       description: serviceDescription,
