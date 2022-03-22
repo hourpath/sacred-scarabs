@@ -142,10 +142,7 @@ export default function Profile() {
       //Scarabs
       fetchMyNFTMetaData(NFTBalances.result);
     }
-  },[NFTBalances?.result, fetchMyNFTMetaData])
-
-
-  
+  }, [NFTBalances?.result, fetchMyNFTMetaData]);
 
   useEffect(() => {
     if (user) {
@@ -227,16 +224,15 @@ export default function Profile() {
   };
 
   const handleSave = async () => {
-    console.log('hi')
+    console.log("hi");
     console.log(userBio);
     setIsSaving(true);
     const file = photoFile;
     const name = photoFileName;
     const profilePic = new Moralis.File(name, file);
-    console.log(username, email, userBio)
+    console.log(username, email, userBio);
     let useOld = false;
     if (photoFile) {
-      
       await setUserData({
         about: userBio,
         email: email,
@@ -249,7 +245,7 @@ export default function Profile() {
     } else {
       useOld = true;
       console.log("no file");
-      console.log(avatarFile)
+      console.log(avatarFile);
       await setUserData({
         about: userBio,
         email: email,
@@ -259,13 +255,10 @@ export default function Profile() {
       });
     }
 
-    if(!useOld){
+    if (!useOld) {
       setAvatarFile(profilePic);
     }
-    
-    
 
-    
     setShowPreview(false);
     setIsSaving(false);
   };
@@ -318,7 +311,6 @@ export default function Profile() {
                     variant="outlined"
                     onChange={(e) => setUserName(e.currentTarget.value)}
                     value={username}
-
                   />
                   <FormLabel>Email:</FormLabel>
                   <TextField
@@ -333,7 +325,6 @@ export default function Profile() {
                     onChange={(e) => setUserWebsite(e.currentTarget.value)}
                     placeholder={userWebsite}
                     value={userWebsite}
-
                   />
                 </FormControl>
 
