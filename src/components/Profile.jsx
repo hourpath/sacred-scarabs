@@ -138,22 +138,27 @@ export default function Profile() {
   );
 
   useEffect(() => {
+    if (NFTBalances?.result) {
+      //Scarabs
+      fetchMyNFTMetaData(NFTBalances.result);
+    }
+  },[NFTBalances?.result, fetchMyNFTMetaData])
+
+
+
+  useEffect(() => {
     if (user) {
       setUserName(user.attributes.username);
       const userEmail = user.get("email");
       if (userEmail) {
         setEmail(userEmail);
       }
-      if (NFTBalances?.result) {
-        //Scarabs
-        fetchMyNFTMetaData(NFTBalances.result);
-      }
 
       const userBioIn = user?.attributes.about;
       if (userBioIn) {
         setUserBio(userBioIn);
       }
-      const userAvatar = user?.attributes?.avatarFile?._url;
+      const userAvatar = user?.attributes?.avatarFile;
       console.log(userAvatar);
       if (userAvatar) {
         setAvatarFile(userAvatar);
@@ -182,7 +187,7 @@ export default function Profile() {
         setState(userAddressIn.state);
       }
     }
-  }, [user, NFTBalances?.result, fetchMyNFTMetaData]);
+  }, [user]);
 
   if (!user) {
     //REDIRECT TO HOME?
@@ -221,11 +226,16 @@ export default function Profile() {
   };
 
   const handleSave = async () => {
+    console.log('hi')
+    console.log(userBio);
     setIsSaving(true);
     const file = photoFile;
     const name = photoFileName;
     const profilePic = new Moralis.File(name, file);
+    console.log(username, email, userBio)
+    let useOld = false;
     if (photoFile) {
+      
       await setUserData({
         about: userBio,
         email: email,
@@ -236,7 +246,9 @@ export default function Profile() {
       });
       await user.save();
     } else {
+      useOld = true;
       console.log("no file");
+      console.log(avatarFile)
       await setUserData({
         about: userBio,
         email: email,
@@ -245,7 +257,14 @@ export default function Profile() {
         showAddress: showAddress,
       });
     }
-    setAvatarFile(profilePic._url);
+
+    if(!useOld){
+      setAvatarFile(profilePic);
+    }
+    
+    
+
+    
     setShowPreview(false);
     setIsSaving(false);
   };
@@ -286,29 +305,34 @@ export default function Profile() {
                   <TextField
                     variant="outlined"
                     onChange={(e) => setUserBio(e.currentTarget.value)}
-                    value={userBio}
+                    placeholder={userBio}
                     multiline
                     minRows={2}
                     maxRows={6}
                     style={{ width: "100%" }}
+                    value={userBio}
                   />
                   <FormLabel>Usename:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => setUserName(e.currentTarget.value)}
                     value={username}
+
                   />
                   <FormLabel>Email:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => setEmail(e.currentTarget.value)}
+                    placeholder={email}
                     value={email}
                   />
                   <FormLabel>Website URL:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => setUserWebsite(e.currentTarget.value)}
+                    placeholder={userWebsite}
                     value={userWebsite}
+
                   />
                 </FormControl>
 
@@ -374,7 +398,7 @@ export default function Profile() {
             <div>
               <Avatar
                 alt="profile Image"
-                src={showPreview ? avatarFilePreview : avatarFile}
+                src={showPreview ? avatarFilePreview : avatarFile?._url}
                 sx={{ width: 200, height: 200 }}
               />
               <Button variant="contained" component="label">
