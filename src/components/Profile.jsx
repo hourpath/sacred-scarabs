@@ -145,6 +145,7 @@ export default function Profile() {
   },[NFTBalances?.result, fetchMyNFTMetaData])
 
 
+  
 
   useEffect(() => {
     if (user) {
