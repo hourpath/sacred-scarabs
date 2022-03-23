@@ -27,38 +27,8 @@ const menuItems = [
     icon: <ETHLogo />,
   },
   {
-    key: "0x539",
-    value: "Local Chain",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x3",
-    value: "Ropsten Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x4",
-    value: "Rinkeby Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x2a",
-    value: "Kovan Testnet",
-    icon: <ETHLogo />,
-  },
-  {
-    key: "0x5",
-    value: "Goerli Testnet",
-    icon: <ETHLogo />,
-  },
-  {
     key: "0x38",
     value: "Binance",
-    icon: <BSCLogo />,
-  },
-  {
-    key: "0x61",
-    value: "Smart Chain Testnet",
     icon: <BSCLogo />,
   },
   {
@@ -67,20 +37,10 @@ const menuItems = [
     icon: <PolygonLogo />,
   },
   {
-    key: "0x13881",
-    value: "Mumbai",
-    icon: <PolygonLogo />,
-  },
-  {
     key: "0xa86a",
     value: "Avalanche",
     icon: <AvaxLogo />,
-  },
-  {
-    key: "0xa869",
-    value: "Avalanche Testnet",
-    icon: <AvaxLogo />,
-  },
+  }
 ];
 
 function Chains() {
@@ -101,7 +61,7 @@ function Chains() {
   };
 
   const menu = (
-    <Menu onClick={handleMenuClick}>
+    <Menu onClick={handleMenuClick} style={{'marginTop': '15px'}}>
       {menuItems.map((item) => (
         <Menu.Item key={item.key} icon={item.icon} style={styles.item}>
           <span style={{ marginLeft: "5px" }}>{item.value}</span>
@@ -129,3 +89,45 @@ function Chains() {
 }
 
 export default Chains;
+
+
+// {
+//   key: "0x539",
+//   value: "Local Chain",
+//   icon: <ETHLogo />,
+// },
+// {
+//   key: "0x3",
+//   value: "Ropsten Testnet",
+//   icon: <ETHLogo />,
+// },
+// {
+//   key: "0x4",
+//   value: "Rinkeby Testnet",
+//   icon: <ETHLogo />,
+// },
+// {
+//   key: "0x2a",
+//   value: "Kovan Testnet",
+//   icon: <ETHLogo />,
+// },
+// {
+//   key: "0x5",
+//   value: "Goerli Testnet",
+//   icon: <ETHLogo />,
+// },
+// {
+//   key: "0xa869",
+//   value: "Avalanche Testnet",
+//   icon: <AvaxLogo />,
+// },
+// {
+//   key: "0x13881",
+//   value: "Mumbai",
+//   icon: <PolygonLogo />,
+// },
+// {
+//   key: "0x61",
+//   value: "Smart Chain Testnet",
+//   icon: <BSCLogo />,
+// },
