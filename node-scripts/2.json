@@ -1,39 +1,39 @@
 {
- "dna": "c9003913b4a7dc73bbbc6619d59a773f0da2cacc",
- "name": "#2",
- "description": "Digital art to represent the infinite potential of ascended energy. Created by Golden Trinity.",
- "image": "ipfs://QmNfPMWLPTEbFpBtPFy4wkYEHRVWcz8dzjziTcPbebzF53/2.png",
- "edition": 2,
- "date": 1632343692365,
- "attributes": [
-  {
-   "trait_type": "Background",
-   "value": "purple"
-  },
-  {
-   "trait_type": "bodyTemplate",
-   "value": "bodyTemplate"
-  },
-  {
-   "trait_type": "hourGlassTemplate",
-   "value": "hourGlass"
-  },
-  {
-   "trait_type": "topLeft",
-   "value": "ohm"
-  },
-  {
-   "trait_type": "topRight",
-   "value": "cross"
-  },
-  {
-   "trait_type": "bottomLeft",
-   "value": "yin"
-  },
-  {
-   "trait_type": "bottomRight",
-   "value": "ohm"
-  }
- ],
- "compiler": "HashLips Art Engine"
+  "dna": "c9003913b4a7dc73bbbc6619d59a773f0da2cacc",
+  "name": "#2",
+  "description": "Digital art to represent the infinite potential of ascended energy. Created by Golden Trinity.",
+  "image": "ipfs://QmNfPMWLPTEbFpBtPFy4wkYEHRVWcz8dzjziTcPbebzF53/2.png",
+  "edition": 2,
+  "date": 1632343692365,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "purple"
+    },
+    {
+      "trait_type": "bodyTemplate",
+      "value": "bodyTemplate"
+    },
+    {
+      "trait_type": "hourGlassTemplate",
+      "value": "hourGlass"
+    },
+    {
+      "trait_type": "topLeft",
+      "value": "ohm"
+    },
+    {
+      "trait_type": "topRight",
+      "value": "cross"
+    },
+    {
+      "trait_type": "bottomLeft",
+      "value": "yin"
+    },
+    {
+      "trait_type": "bottomRight",
+      "value": "ohm"
+    }
+  ],
+  "compiler": "HashLips Art Engine"
 }
