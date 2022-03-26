@@ -1,4 +1,4 @@
-import { Container, Grid, InputLabel } from "@mui/material";
+import { Container, Grid, InputLabel, Card } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useMoralis, useNFTBalances } from "react-moralis";
 import { useState, useEffect, useCallback } from "react";
@@ -293,7 +293,7 @@ export default function Profile() {
           </Grid>
           <Grid item xs={6}>
             {user && (
-              <div>
+              <Card>
                 <FormControl>
                   <FormLabel>About you :</FormLabel>
                   <TextField
@@ -340,7 +340,7 @@ export default function Profile() {
                   Save
                 </Button>
                 {isSaving && <CircularProgress />}
-              </div>
+              </Card>
             )}
             {user && showAddress && (
               <div style={addressFormStyle}>
