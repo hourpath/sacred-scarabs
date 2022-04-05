@@ -8,27 +8,19 @@ import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
 
+
 export default function HealingNetwork() {
   const [users, setUsers] = useState([]);
 
-  // async function getAllUsers(){
-  //   const Users = Moralis.Object.extend("_User");
-  //   const query = new Moralis.Query(Users);
-  //   const results = await query.find();
-  //   setUsers(results);
-  //   console.log(results);
-  //   console.log(users);
-  // }
 
   useEffect(() => {
     const fetchData = async () => {
-      const Users = Moralis.Object.extend("Testing");
-      const query = new Moralis.Query(Users);
-      const results = await query.find({ useMasterKey: true });
+      const results = await Moralis.Cloud.run("getPractitioners", {});
+      console.log(results)
       setUsers(results);
       for (let i = 0; i < results.length; i++) {
         const object = results[i];
-        console.log(object.id + " - " + object.get("name"));
+        console.log(object.id + " - " + object.get("name") + object.get('username'));
       }
     };
 
