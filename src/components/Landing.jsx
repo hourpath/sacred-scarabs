@@ -77,6 +77,14 @@ export default function Landing() {
               </Typography>
             </div>
           </Grid>
+          <Grid item xs={12}>
+            <div className="subHeadingText">
+              <Typography variant="h6" sx={{ color: "#ffffff" }}>
+                Join the discussion on{" "}
+                <a href="https://discord.gg/8pAHgnBpgJ">Discord</a>
+              </Typography>
+            </div>
+          </Grid>
         </Grid>
       </Container>
     </div>
