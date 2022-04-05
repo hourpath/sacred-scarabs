@@ -1,0 +1,59 @@
+{
+ "dna": "56f1e1417b4eb1b821036525f665ee2c4c02d174",
+ "name": "#564",
+ "description": "Digital art to represent the infinite potential of ascended energy.",
+ "image": "https://ipfs.moralis.io:2053/ipfs/QmYdEQk6vQG5AbdSyGCSwxKMqsYYQFCWrKm6USrUfU9XFp/images/564.png",
+ "edition": 564,
+ "date": 1637336886901,
+ "attributes": [
+  {
+   "trait_type": "Background",
+   "value": "yellow"
+  },
+  {
+   "trait_type": "metatronscube",
+   "value": "metatronscube"
+  },
+  {
+   "trait_type": "body",
+   "value": "body"
+  },
+  {
+   "trait_type": "wings",
+   "value": "wings"
+  },
+  {
+   "trait_type": "shell",
+   "value": "shell"
+  },
+  {
+   "trait_type": "wingDetails",
+   "value": "wingDetails"
+  },
+  {
+   "trait_type": "shellDetails",
+   "value": "shellDetails"
+  },
+  {
+   "trait_type": "topShell",
+   "value": "topShell"
+  },
+  {
+   "trait_type": "topLeft",
+   "value": "fish"
+  },
+  {
+   "trait_type": "topRight",
+   "value": "fish"
+  },
+  {
+   "trait_type": "bottomLeft",
+   "value": "star"
+  },
+  {
+   "trait_type": "bottomRight",
+   "value": "starOfDavid"
+  }
+ ],
+ "compiler": "HashLips Art Engine"
+}

@@ -40,7 +40,7 @@ const menuItems = [
     key: "0xa86a",
     value: "Avalanche",
     icon: <AvaxLogo />,
-  }
+  },
 ];
 
 function Chains() {
@@ -61,7 +61,7 @@ function Chains() {
   };
 
   const menu = (
-    <Menu onClick={handleMenuClick} style={{'marginTop': '15px'}}>
+    <Menu onClick={handleMenuClick} style={{ marginTop: "15px" }}>
       {menuItems.map((item) => (
         <Menu.Item key={item.key} icon={item.icon} style={styles.item}>
           <span style={{ marginLeft: "5px" }}>{item.value}</span>
@@ -89,7 +89,6 @@ function Chains() {
 }
 
 export default Chains;
-
 
 // {
 //   key: "0x539",
