@@ -28,50 +28,46 @@ export default function HealingNetwork() {
     };
 
     fetchData();
-  }, []);
+  },[]);
 
-  // async function getUsers(){
-  //     const Users = Moralis.Object.extend("_User");
-  //     const query = new Moralis.Query(Users);
-  //     const results = await query.find();
-  //     setUsers(results);
-  //     console.log(results);
-  //     console.log(users);
-  // }
-
-  // getUsers();
 
   const renderCards = () =>{
-    console.log(users)
-      users.map((practitioner)=>{
-        return (
-          <Grid item xs={6} md={4} lg={3} style={{ border: "5px red" }}>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-              component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {practitioner.username}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Becky G is a tarot reader with over 25 years of experience she
-                is a friendly person...
-              </Typography>
-              <Typography variant="body3" color="text.secondary">
-                Remote
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">Profile</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        );
-      })
+
+    return(
+      <>
+        {users.map((p) =>{
+          return (
+                <Grid item xs={6} md={4} lg={3}>
+                  <Card sx={{ maxWidth: 345 }}>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={p.avatarFile._url}
+                      alt={p.avatarFile._name}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {p.username}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {p.about}
+                      </Typography>
+                      <Typography variant="body3" color="text.secondary">
+                        Remote
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small">Profile</Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+          )
+        })}
+        </>
+    )
+
+
+      
   }
 
   return (
@@ -117,107 +113,7 @@ export default function HealingNetwork() {
                 </CardActions>
               </Card>
             </div>
-          </Grid>
-          <Grid item xs={6} md={4} lg={3} style={{ border: "5px red" }}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Becky G
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Becky G is a tarot reader with over 25 years of experience she
-                  is a friendly person...
-                </Typography>
-                <Typography variant="body3" color="text.secondary">
-                  Remote
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Profile</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={6} md={4} lg={3} style={{ border: "5px red" }}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Becky G
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Becky G is a tarot reader with over 25 years of experience she
-                  is a friendly person...
-                </Typography>
-                <Typography variant="body3" color="text.secondary">
-                  Remote
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Profile</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={6} md={4} lg={3} style={{ border: "5px red" }}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Becky G
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Becky G is a tarot reader with over 25 years of experience she
-                  is a friendly person...
-                </Typography>
-                <Typography variant="body3" color="text.secondary">
-                  Remote
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Profile</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={6} md={4} lg={3} style={{ border: "5px red" }}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Becky G
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Becky G is a tarot reader with over 25 years of experience she
-                  is a friendly person...
-                </Typography>
-                <Typography variant="body3" color="text.secondary">
-                  Remote
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Profile</Button>
-              </CardActions>
-            </Card>
-          </Grid>
+          </Grid>    
           {loaded ? renderCards(): "NOT LOADED"}
         </Grid>
       </Container>
