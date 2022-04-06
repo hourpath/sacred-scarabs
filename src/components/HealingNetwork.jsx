@@ -7,6 +7,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
+import {
+  Link
+} from "react-router-dom";
 
 export default function HealingNetwork() {
   const [users, setUsers] = useState([]);
@@ -20,55 +23,50 @@ export default function HealingNetwork() {
       for (let i = 0; i < results.length; i++) {
         //const object = results[i].attributes;
         const object = results[i];
-        console.log(
-         object
-        );
+        console.log(object);
       }
       setLoaded(true);
     };
 
     fetchData();
-  },[]);
+  }, []);
 
-
-  const renderCards = () =>{
-
-    return(
+  const renderCards = () => {
+    return (
       <>
-        {users.map((p) =>{
+        {users.map((p) => {
           return (
-                <Grid item xs={6} md={4} lg={3}>
-                  <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image={p.avatarFile._url}
-                      alt={p.avatarFile._name}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {p.username}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {p.about}
-                      </Typography>
-                      <Typography variant="body3" color="text.secondary">
-                        Remote
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">Profile</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-          )
+            <Grid item xs={6} md={4} lg={3}>
+              <Card sx={{ maxWidth: 345 }}>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={p.avatarFile._url}
+                  alt={p.avatarFile._name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {p.username}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {p.about}
+                  </Typography>
+                  <Typography variant="body3" color="text.secondary">
+                    Remote
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Link to={`/practitioner/${p.username}`}>
+                  <Button size="small">Profile</Button>
+                  </Link>
+                </CardActions>
+              </Card>
+            </Grid>
+          );
         })}
-        </>
-    )
-
-
-      
-  }
+      </>
+    );
+  };
 
   return (
     <div>
@@ -113,8 +111,8 @@ export default function HealingNetwork() {
                 </CardActions>
               </Card>
             </div>
-          </Grid>    
-          {loaded ? renderCards(): "NOT LOADED"}
+          </Grid>
+          {loaded ? renderCards() : "NOT LOADED"}
         </Grid>
       </Container>
     </div>

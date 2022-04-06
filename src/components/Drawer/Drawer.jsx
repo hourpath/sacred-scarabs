@@ -20,6 +20,7 @@ import HealingNetwork from "components/HealingNetwork";
 import NFTMarket from "components/NFTMarket";
 import NFTStaking from "components/NFTStaking";
 import DEX from "components/DEX/DEX";
+import Practitioner from 'components/Practitioner';
 
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -467,6 +468,9 @@ export default function MiniDrawer(avatar) {
             </Route>
             <Route path="/DEX">
               <DEX />
+            </Route>
+            <Route path="/practitioner/:username">
+              <Practitioner />
             </Route>
             <Route path="/">
               <Redirect to="/home" />
