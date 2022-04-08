@@ -7,9 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function HealingNetwork() {
   const [users, setUsers] = useState([]);
@@ -36,7 +34,7 @@ export default function HealingNetwork() {
       <>
         {users.map((p, id) => {
           return (
-            <Grid item xs={6} md={4} lg={3} id={id}>
+            <Grid item xs={6} md={4} lg={3} key={id}>
               <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                   component="img"
@@ -57,7 +55,7 @@ export default function HealingNetwork() {
                 </CardContent>
                 <CardActions>
                   <Link to={`/practitioner/${p.username}`}>
-                  <Button size="small">Profile</Button>
+                    <Button size="small">Profile</Button>
                   </Link>
                 </CardActions>
               </Card>

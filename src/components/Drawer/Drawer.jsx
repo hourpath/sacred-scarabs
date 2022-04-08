@@ -20,7 +20,7 @@ import HealingNetwork from "components/HealingNetwork";
 import NFTMarket from "components/NFTMarket";
 import NFTStaking from "components/NFTStaking";
 import DEX from "components/DEX/DEX";
-import Practitioner from 'components/Practitioner';
+import Practitioner from "components/Practitioner";
 
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
