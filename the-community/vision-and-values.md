@@ -8,7 +8,7 @@ Future developments will include the ability to crowd-source projects and aid hu
 
 ### How does this work?
 
-The Healers Network will be available to all users to access healers worldwide. To be added to the Healers Network to provide services, users must actively hold at least 1 Sacred Scarab NFT.&#x20;
+The Healers Network will be available to all users to access healers, coaches, tarot readers, psychics and intuitive channels worldwide. To be added to the Healers Network to provide services, users must actively hold at least 1 Sacred Scarab NFT.&#x20;
 
 Practitioners and coaches of many different healing modalities may offer services through their personal profile page. Healers will determine whether they provide services locally or remotely. For remote healers, additional features will be built into the app that allow for live video chat as well as internal messaging.
 
