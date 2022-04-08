@@ -27,7 +27,7 @@ export default function HealingNetwork() {
           <h1>{user.username}</h1>
           <img src={user.avatarFile._url}></img>
           <p>{user.about}</p>
-          <a src={user.websiteURL}>{user.websiteURL}</a>
+          <a target='_blank' rel="noreferrer noopener"href={user.websiteURL}>{user.websiteURL}</a>
           <p>{user.services?.length}</p>
           <p>{user.email}</p>
         </div>
