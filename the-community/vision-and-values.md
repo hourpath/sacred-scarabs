@@ -10,7 +10,13 @@ Future developments will include the ability to crowd-source projects and aid hu
 
 The Healers Network will be available to all users to access healers worldwide. To be added to the Healers Network to provide services, users must actively hold at least 1 Sacred Scarab NFT.&#x20;
 
-We are presently developing our own internal NFT marketplace as well as a project funding page where users will share their story and use their held NFTs to fund projects.&#x20;
+Practitioners and coaches of many different healing modalities may offer services through their personal profile page. Healers will determine whether they provide services locally or remotely. For remote healers, additional features will be built into the app that allow for live video chat as well as internal messaging.
+
+Coaches and healers may also upload content in the form of training packages and be payed-per-view using the future Sacred Scarabs Token.
+
+The Sacred Scarabs Marketplace will allow for Sacred Scarab holders to list their personal creations for sale using the Sacred Scarab Token as payment.
+
+We are presently developing our own internal project funding page where users will share their story and use their held NFTs to fund projects or raise investment capital for real life projects. As funded projects progress, users will have the option to share how the funding had been used and show progress on their dreams.&#x20;
 
 ## Our Values
 
