@@ -11,18 +11,16 @@ export default function HealingNetwork() {
   const { isInitialized } = useMoralis();
 
   useEffect(() => {
-    if(isInitialized){
+    if (isInitialized) {
+      const queryParams = { username: username };
+      const fetchData = async () => {
+        const results = await Moralis.Cloud.run("getPractitioner", queryParams);
+        setUser(results);
+        setLoaded(true);
+      };
 
-    
-    const queryParams = { username: username };
-    const fetchData = async () => {
-      const results = await Moralis.Cloud.run("getPractitioner", queryParams);
-      setUser(results);
-      setLoaded(true);
-    };
-
-    fetchData();
-  }
+      fetchData();
+    }
   }, [username, isInitialized]);
 
   return (
