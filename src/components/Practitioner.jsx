@@ -1,14 +1,19 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
+import { useMoralis } from "react-moralis";
 
 export default function HealingNetwork() {
   let { username } = useParams();
 
   const [user, setUser] = useState();
   const [loaded, setLoaded] = useState(false);
+  const { isInitialized } = useMoralis();
 
   useEffect(() => {
+    if(isInitialized){
+
+    
     const queryParams = { username: username };
     const fetchData = async () => {
       const results = await Moralis.Cloud.run("getPractitioner", queryParams);
@@ -17,7 +22,8 @@ export default function HealingNetwork() {
     };
 
     fetchData();
-  }, [username]);
+  }
+  }, [username, isInitialized]);
 
   return (
     <h1>
@@ -27,7 +33,9 @@ export default function HealingNetwork() {
           <h1>{user.username}</h1>
           <img src={user.avatarFile._url}></img>
           <p>{user.about}</p>
-          <a target='_blank' rel="noreferrer noopener"href={user.websiteURL}>{user.websiteURL}</a>
+          <a target="_blank" rel="noreferrer noopener" href={user.websiteURL}>
+            {user.websiteURL}
+          </a>
           <p>{user.services?.length}</p>
           <p>{user.email}</p>
         </div>
