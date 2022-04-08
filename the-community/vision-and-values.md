@@ -12,6 +12,8 @@ The Healers Network will be available to all users to access healers, coaches, t
 
 Practitioners and coaches of many different healing modalities may offer services through their personal profile page. Healers will determine whether they provide services locally or remotely. For remote healers, additional features will be built into the app that allow for live video chat as well as internal messaging.
 
+We will also be including an internal scheduling system to allow for client management and bookings directly.
+
 Rates for services and offerings will be set by each practitioner using the Sacred Scarabs Token OR they may choose to accept donations for services. If accepting donations, the user who received the service will be prompted to choose a donation amount (in the form of Sacred Scarabs Token) after service completion.
 
 Coaches and healers may also upload content in the form of training packages and be payed-per-view using the future Sacred Scarabs Token.
