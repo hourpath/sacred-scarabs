@@ -24,6 +24,8 @@ We are presently developing our own internal project funding page where users wi
 
 As funded projects progress, users will have the option to share how the funding had been used and show progression on their dreams. When others see that their resources are being put to good use, raising funding in later stages will become easier and easier.
 
+The ultimate vision is to pay it forward. After projects have reached a position of becoming profitable in the real world. Project managers can then choose to buyback the original NFTs that were sold to fund their projects using profits.
+
 ## Our Values
 
 ### Be Compassionate
