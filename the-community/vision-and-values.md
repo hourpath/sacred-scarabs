@@ -18,7 +18,9 @@ Coaches and healers may also upload content in the form of training packages and
 
 The Sacred Scarabs Marketplace will allow for Sacred Scarab holders to list their personal creations for sale using the Sacred Scarab Token as payment as well as list NFTs from other collections for sale.
 
-We are presently developing our own internal project funding page where users will share their story and use held NFTs to fund projects or raise investment capital for real life projects. As funded projects progress, users will have the option to share how the funding had been used and show progression on their dreams. When others see that their resources are being put to good use, raising funding in later stages will become easier and easier.
+We are presently developing our own internal project funding page where users will share their story and use held NFTs to raise capital and fund real life lightworker projects.&#x20;
+
+As funded projects progress, users will have the option to share how the funding had been used and show progression on their dreams. When others see that their resources are being put to good use, raising funding in later stages will become easier and easier.
 
 ## Our Values
 
