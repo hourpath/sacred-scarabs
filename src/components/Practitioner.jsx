@@ -10,6 +10,29 @@ export default function HealingNetwork() {
   const [loaded, setLoaded] = useState(false);
   const { isInitialized } = useMoralis();
 
+ const renderServices = (() => {
+    if(user.services){
+      console.log(user.services)
+      return(
+        user.services.map((s)=>{
+          return(
+            <div key={s.id}>
+              {s.name}:
+              {s.description}
+              <br></br>
+              Price:{s.price}
+              </div>
+          )
+        })
+      )
+    }else{
+      return (
+        <h1>No services</h1>
+      )
+    }
+
+  })
+
   useEffect(() => {
     if (isInitialized) {
       const queryParams = { username: username };
@@ -36,6 +59,7 @@ export default function HealingNetwork() {
           </a>
           <p>{user.services?.length}</p>
           <p>{user.email}</p>
+          {renderServices()}
         </div>
       ) : (
         "NOT LOADED"
