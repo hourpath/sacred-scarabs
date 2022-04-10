@@ -240,7 +240,7 @@ export default function Profile() {
         username: username,
         websiteURL: userWebsite,
         showAddress: showAddress,
-        isPractitioner : true,
+        isPractitioner: true,
       });
       await user.save();
     } else {
@@ -253,7 +253,7 @@ export default function Profile() {
         username: username,
         websiteURL: userWebsite,
         showAddress: showAddress,
-        isPractitioner : true,
+        isPractitioner: true,
       });
     }
 
