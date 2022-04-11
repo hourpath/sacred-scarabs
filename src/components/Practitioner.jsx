@@ -100,7 +100,7 @@ export default function HealingNetwork() {
 
           <Grid>{<BasicTabs user={user} />}</Grid>
 
-          <Grid item xs={12} direction="row" style={{ marginBottom: "5px" }}>
+          <Grid container item xs={12} direction="row" style={{ marginBottom: "5px" }}>
             <Card>
               <Grid container direction="row">
                 <Grid item xs={2}>

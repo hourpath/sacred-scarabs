@@ -63,11 +63,10 @@ export default function BasicTabs(props) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
+        {user.services ? user.services.length : ""}
         Users Collections
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        {user.services.length}
-      </TabPanel>
+      <TabPanel value={value} index={1}></TabPanel>
       <TabPanel value={value} index={2}>
         Users Creations
       </TabPanel>
