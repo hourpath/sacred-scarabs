@@ -38,7 +38,8 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs(props) {
+  const { user } = props;
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -60,13 +61,16 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
+        Users Collections
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        {user.services.length}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Users Creations
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        Users Projects
       </TabPanel>
     </Box>
   );

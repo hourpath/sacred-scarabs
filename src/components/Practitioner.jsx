@@ -53,7 +53,7 @@ export default function HealingNetwork() {
       {loaded && user ? (
         <div>
           <Grid item xs={12}>
-            <Card sx={{ border: "5px red", height: "45vh" }}>
+            <Card sx={{ border: "5px red", height: "40vh" }}>
               <Grid
                 container
                 direction="row"
@@ -100,31 +100,35 @@ export default function HealingNetwork() {
               </Grid>
             </Card>
           </Grid>
-          <Grid container>{<BasicTabs />}</Grid>
+
           <Grid>
-            <Grid item xs={12}>
-              Item
-            </Grid>
+            {<BasicTabs user={user} />}
+          </Grid>
+
+        
+
+          <Grid item xs={12}
+          direction='row'>
             <Card>
-              <Grid container>
-                <Grid item xs={3}>
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={user.avatarFile._url}
-                    alt={user.avatarFile._name}
-                  />
-                  EXAMPLE SERVICE
+              <Grid container
+              direction='row'>
+                <Grid item xs={2}>
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={user.avatarFile._url}
+                      alt={user.avatarFile._name}
+                    />
+                  </Grid>
+                <Grid item xs={10}>
+                  <h1>TITLE</h1>
+                  <h4>Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd  Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd  Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd  </h4>
+                  Price: 5$ - 5 eth - 200 SACRED SCARSB
+                  <p>Reviews</p>
                 </Grid>
-              </Grid>
-              <Grid item xs={9}>
-                ABOUT SERVICE
               </Grid>
             </Card>
           </Grid>
-          <p>{user.services?.length}</p>
-          <p>{user.email}</p>
-
           {renderServices()}
         </div>
       ) : (
