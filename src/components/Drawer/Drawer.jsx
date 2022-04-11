@@ -447,6 +447,7 @@ export default function MiniDrawer(avatar) {
               <Dashboard />
             </Route>
             <Route path="/profile">
+              {isAuthenticated ? <Profile /> :<Redirect to="/home" /> }
               <Profile />
             </Route>
             <Route path="/nftBalance">
