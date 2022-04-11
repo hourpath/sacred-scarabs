@@ -101,28 +101,27 @@ export default function HealingNetwork() {
             </Card>
           </Grid>
 
-          <Grid>
-            {<BasicTabs user={user} />}
-          </Grid>
+          <Grid>{<BasicTabs user={user} />}</Grid>
 
-        
-
-          <Grid item xs={12}
-          direction='row'>
+          <Grid item xs={12} direction="row">
             <Card>
-              <Grid container
-              direction='row'>
+              <Grid container direction="row">
                 <Grid item xs={2}>
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={user.avatarFile._url}
-                      alt={user.avatarFile._name}
-                    />
-                  </Grid>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={user.avatarFile._url}
+                    alt={user.avatarFile._name}
+                  />
+                </Grid>
                 <Grid item xs={10}>
                   <h1>TITLE</h1>
-                  <h4>Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd  Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd  Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd  </h4>
+                  <h4>
+                    Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd
+                    Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd
+                    Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd
+                    Desciprrtion of sericces asjdfl; jsflsjd lkjfsdlsjd{" "}
+                  </h4>
                   Price: 5$ - 5 eth - 200 SACRED SCARSB
                   <p>Reviews</p>
                 </Grid>
