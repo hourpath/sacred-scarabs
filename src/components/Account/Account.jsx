@@ -150,6 +150,11 @@ function Account() {
     );
   }
 
+  if(account && isAuthenticated){
+    return (
+      ""
+    )
+  }
   return (
     <>
       {/* <button
