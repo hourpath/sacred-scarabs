@@ -101,6 +101,26 @@ export default function HealingNetwork() {
             </Card>
           </Grid>
           <Grid container>{<BasicTabs />}</Grid>
+          <Grid>
+            <Grid item xs={12}>Item</Grid>
+            <Card>
+              <Grid container> 
+                <Grid item xs={3}>
+                <CardMedia
+
+                    component="img"
+                    height="200"
+                    image={user.avatarFile._url}
+                    alt={user.avatarFile._name}
+                  />
+                  EXAMPLE SERVICE
+                </Grid>
+              </Grid>
+              <Grid item xs ={9}>
+                ABOUT SERVICE
+              </Grid>
+            </Card>
+          </Grid>
           <p>{user.services?.length}</p>
           <p>{user.email}</p>
 
