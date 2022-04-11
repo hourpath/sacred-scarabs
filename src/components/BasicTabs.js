@@ -38,6 +38,8 @@ function a11yProps(index) {
   };
 }
 
+// const renderServices = () => {};
+
 export default function BasicTabs(props) {
   const { user } = props;
   const [value, setValue] = React.useState(0);
