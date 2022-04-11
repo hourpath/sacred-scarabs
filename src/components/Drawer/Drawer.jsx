@@ -96,6 +96,7 @@ const openedMixin = (theme) => ({
   }),
   background: "#544e6d",
   overflowX: "hidden",
+  marginBottom: '20px',
 });
 
 const closedMixin = (theme) => ({
@@ -195,7 +196,7 @@ export default function MiniDrawer(avatar) {
     <Router>
       <Box sx={{ display: "flex", background: "#3c6580" }}>
         <CssBaseline />
-        <AppBar position="fixed" open={open} sx={{ background: "#3c6580" }}>
+        <AppBar position="fixed" open={open} sx={{ background: "#3c6580"}}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -243,10 +244,10 @@ export default function MiniDrawer(avatar) {
               ) : (
                 <Tooltip title="Log in to open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
+                    {/* <Avatar
                       alt="Remy Sharp"
                       src="/static/images/avatar/2.jpg"
-                    />
+                    /> */}
                   </IconButton>
                 </Tooltip>
               )}
@@ -282,7 +283,7 @@ export default function MiniDrawer(avatar) {
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
-          <DrawerHeader sx={{ background: "#544e6d" }}>
+          <DrawerHeader sx={{ background: "#544e6d", marginBottom: '5px' }}>
             <IconButton onClick={handleDrawerClose} sx={{ color: "#ffffff" }}>
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />
