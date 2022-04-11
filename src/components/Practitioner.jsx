@@ -9,6 +9,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import BasicTabs from "./BasicTabs";
 
 export default function HealingNetwork() {
   let { username } = useParams();
@@ -100,22 +101,11 @@ export default function HealingNetwork() {
             </Card>
           </Grid>
           <Grid container>
-            <Grid item xs={1}>
-              <h2>Collections</h2>
-            </Grid>
-            <Grid item xs={1}>
-              <h2>Services</h2>
-            </Grid>
-            <Grid item xs={1}>
-              <h2>Creations</h2>
-            </Grid>
-            <Grid item xs={1}>
-              <h2>Projects</h2>
-            </Grid>
+          {<BasicTabs />}
           </Grid>
           <p>{user.services?.length}</p>
           <p>{user.email}</p>
-
+         
           {renderServices()}
         </div>
       ) : (
