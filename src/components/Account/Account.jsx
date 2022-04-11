@@ -150,10 +150,8 @@ function Account() {
     );
   }
 
-  if(account && isAuthenticated){
-    return (
-      ""
-    )
+  if (account && isAuthenticated) {
+    return "";
   }
   return (
     <>

@@ -76,7 +76,7 @@ const settings = [
     name: "Token Balances",
     path: "/erc20balance",
     id: 2,
-  }
+  },
 ];
 
 const drawerWidth = 240;
@@ -156,12 +156,8 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-
-
-
-
 export default function MiniDrawer(avatar) {
-  const {logout} = useMoralis();
+  const { logout } = useMoralis();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -182,12 +178,12 @@ export default function MiniDrawer(avatar) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  async function logMeOutSteps(){
-  await logout();
-  window.localStorage.removeItem("connectorId");
-  handleCloseUserMenu();
-  <Redirect to='/'></Redirect>
-}
+  async function logMeOutSteps() {
+    await logout();
+    window.localStorage.removeItem("connectorId");
+    handleCloseUserMenu();
+    <Redirect to="/"></Redirect>;
+  }
 
   const { isAuthenticated } = useMoralis();
   let topNavRoutes = [];
@@ -289,9 +285,7 @@ export default function MiniDrawer(avatar) {
                     </MenuItem>
                   ))}
                   <MenuItem key={999} onClick={logMeOutSteps}>
-                  <Typography textAlign="center">
-                        Logout
-                        </Typography>
+                    <Typography textAlign="center">Logout</Typography>
                   </MenuItem>
                 </Menu>
               )}
