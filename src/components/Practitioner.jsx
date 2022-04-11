@@ -2,15 +2,13 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Moralis } from "moralis";
 import { useMoralis } from "react-moralis";
-import {  Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Card from "@mui/material/Card";
-import FacebookIcon from '@mui/icons-material/Facebook';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-
-
+import FacebookIcon from "@mui/icons-material/Facebook";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 export default function HealingNetwork() {
   let { username } = useParams();
@@ -51,51 +49,78 @@ export default function HealingNetwork() {
 
   return (
     <div>
-      
       {loaded && user ? (
         <div>
-          <Grid item xs={12}> 
-              <Card sx={{border: '5px red', height:'45vh' }}>
-                    <Grid  container
-                        direction="row"
-                        justifyContent="center"
-                        alignItems="center">
-                      <Grid item xs={4}>
-                          <CardMedia
-                                    component="img"
-                                    height="200"
-                                    image={user.avatarFile._url}
-                                    alt={user.avatarFile._name}
-                                  />
-                        </Grid>
-                    </Grid>
-                    <Grid  container
-                        direction="column"
-                        justifyContent="center"
-                        alignItems="center">
-                    <Grid item xs={12}><h1>{user.username}</h1></Grid>
-                    <Grid item xs={12}>{user.about}</Grid>
-                    <Grid item xs={12}> <a href={user.websiteURL} target="_blank" rel="noopener noreferrer">{user.websiteURL}</a></Grid>
-                    <Grid item xs={12}><FacebookIcon /><YouTubeIcon /><InstagramIcon /><TwitterIcon /></Grid>
-                    </Grid>
-                </Card>
+          <Grid item xs={12}>
+            <Card sx={{ border: "5px red", height: "45vh" }}>
+              <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Grid item xs={4}>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={user.avatarFile._url}
+                    alt={user.avatarFile._name}
+                  />
+                </Grid>
+              </Grid>
+              <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Grid item xs={12}>
+                  <h1>{user.username}</h1>
+                </Grid>
+                <Grid item xs={12}>
+                  {user.about}
+                </Grid>
+                <Grid item xs={12}>
+                  {" "}
+                  <a
+                    href={user.websiteURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {user.websiteURL}
+                  </a>
+                </Grid>
+                <Grid item xs={12}>
+                  <FacebookIcon />
+                  <YouTubeIcon />
+                  <InstagramIcon />
+                  <TwitterIcon />
+                </Grid>
+              </Grid>
+            </Card>
           </Grid>
           <Grid container>
-            <Grid item xs={1}><h2>Collections</h2></Grid>
-            <Grid item xs={1}><h2>Services</h2></Grid>
-            <Grid item xs={1}><h2>Creations</h2></Grid>
-            <Grid item xs={1}><h2>Projects</h2></Grid>
+            <Grid item xs={1}>
+              <h2>Collections</h2>
+            </Grid>
+            <Grid item xs={1}>
+              <h2>Services</h2>
+            </Grid>
+            <Grid item xs={1}>
+              <h2>Creations</h2>
+            </Grid>
+            <Grid item xs={1}>
+              <h2>Projects</h2>
+            </Grid>
           </Grid>
           <p>{user.services?.length}</p>
           <p>{user.email}</p>
-          
+
           {renderServices()}
-      </div>
+        </div>
       ) : (
         "NOT LOADED"
       )}
-
-      
     </div>
   );
 }
