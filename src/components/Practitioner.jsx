@@ -100,12 +100,10 @@ export default function HealingNetwork() {
               </Grid>
             </Card>
           </Grid>
-          <Grid container>
-          {<BasicTabs />}
-          </Grid>
+          <Grid container>{<BasicTabs />}</Grid>
           <p>{user.services?.length}</p>
           <p>{user.email}</p>
-         
+
           {renderServices()}
         </div>
       ) : (
