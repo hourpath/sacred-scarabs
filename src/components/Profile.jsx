@@ -82,6 +82,9 @@ export default function Profile() {
   const [userBio, setUserBio] = useState("");
   const [facebookURL, setfacebookURL] = useState("");
   const [twitterURL, settwitterURL] = useState("");
+  const [tiktokURL, settiktokURL] = useState("");
+  const [youtubeURL, setyoutubeURL] = useState("");
+  const [instagramURL, setinstagramURL] = useState("");
 
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
@@ -185,6 +188,20 @@ export default function Profile() {
       if (twitterURLIn) {
         settwitterURL(twitterURLIn);
       }
+      const tiktokURLIn = user?.attributes.tiktokURL;
+      if(tiktokURLIn){
+        settiktokURL(tiktokURLIn)
+      }
+
+      const youtubeURLIn = user?.attributes.youtubeURL;
+      if(youtubeURLIn){
+        setyoutubeURL(youtubeURLIn);
+      }
+
+      const instagramURLIn = user?.attributes.instagramURL;
+      if(instagramURLIn){
+        setinstagramURL(instagramURLIn);
+      }
 
       const userAddressIn = user?.attributes.userAddress;
 
@@ -255,6 +272,9 @@ export default function Profile() {
         isPractitioner: true,
         facebookURL: facebookURL,
         twitterURL: twitterURL,
+        tiktokURL: tiktokURL,
+        youtubeURL: youtubeURL,
+        instagramURL: instagramURL,
       });
       await user.save();
     } else {
@@ -270,6 +290,9 @@ export default function Profile() {
         isPractitioner: true,
         facebookURL: facebookURL,
         twitterURL: twitterURL,
+        tiktokURL: tiktokURL,
+        youtubeURL: youtubeURL,
+        instagramURL: instagramURL,
       });
     }
 
@@ -358,6 +381,27 @@ export default function Profile() {
                     onChange={(e) => settwitterURL(e.currentTarget.value)}
                     placeholder={twitterURL}
                     value={twitterURL}
+                  />
+                <FormLabel>TiktokURL:</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    onChange={(e) => settiktokURL(e.currentTarget.value)}
+                    placeholder={tiktokURL}
+                    value={tiktokURL}
+                  />
+                <FormLabel>YoutubeURL:</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    onChange={(e) => setyoutubeURL(e.currentTarget.value)}
+                    placeholder={youtubeURL}
+                    value={youtubeURL}
+                  />
+                <FormLabel>InstagramURL:</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    onChange={(e) => setinstagramURL(e.currentTarget.value)}
+                    placeholder={instagramURL}
+                    value={instagramURL}
                   />
                 </FormControl>
 
