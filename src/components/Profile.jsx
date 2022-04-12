@@ -176,17 +176,15 @@ export default function Profile() {
         setShowAddress(showAddressIn);
       }
 
-
       const showfacebookURLIn = user?.attributes.facebookURL;
-      if(showfacebookURLIn){
+      if (showfacebookURLIn) {
         setfacebookURL(showfacebookURLIn);
       }
 
       const twitterURLIn = user?.attributes.twitterURL;
-      if(twitterURLIn){
+      if (twitterURLIn) {
         settwitterURL(twitterURLIn);
       }
-
 
       const userAddressIn = user?.attributes.userAddress;
 
@@ -255,7 +253,7 @@ export default function Profile() {
         websiteURL: userWebsite,
         showAddress: showAddress,
         isPractitioner: true,
-        facebookURL : facebookURL,
+        facebookURL: facebookURL,
         twitterURL: twitterURL,
       });
       await user.save();
@@ -346,15 +344,15 @@ export default function Profile() {
                     placeholder={userWebsite}
                     value={userWebsite}
                   />
-                <FormLabel>FacebookURL:</FormLabel>
+                  <FormLabel>FacebookURL:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => setfacebookURL(e.currentTarget.value)}
                     placeholder={facebookURL}
                     value={facebookURL}
                   />
-                  
-                <FormLabel>TwitterURL:</FormLabel>
+
+                  <FormLabel>TwitterURL:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => settwitterURL(e.currentTarget.value)}
