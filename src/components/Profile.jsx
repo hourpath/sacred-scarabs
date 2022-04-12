@@ -80,6 +80,8 @@ export default function Profile() {
   const [userAddress, setUserAddress] = useState({});
   const [userWebsite, setUserWebsite] = useState("");
   const [userBio, setUserBio] = useState("");
+  const [facebookURL, setfacebookURL] = useState("");
+  const [twitterURL, settwitterURL] = useState("");
 
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
@@ -174,6 +176,18 @@ export default function Profile() {
         setShowAddress(showAddressIn);
       }
 
+
+      const showfacebookURLIn = user?.attributes.facebookURL;
+      if(showfacebookURLIn){
+        setfacebookURL(showfacebookURLIn);
+      }
+
+      const twitterURLIn = user?.attributes.twitterURL;
+      if(twitterURLIn){
+        settwitterURL(twitterURLIn);
+      }
+
+
       const userAddressIn = user?.attributes.userAddress;
 
       if (userAddressIn) {
@@ -241,6 +255,8 @@ export default function Profile() {
         websiteURL: userWebsite,
         showAddress: showAddress,
         isPractitioner: true,
+        facebookURL : facebookURL,
+        twitterURL: twitterURL,
       });
       await user.save();
     } else {
@@ -254,6 +270,8 @@ export default function Profile() {
         websiteURL: userWebsite,
         showAddress: showAddress,
         isPractitioner: true,
+        facebookURL: facebookURL,
+        twitterURL: twitterURL,
       });
     }
 
@@ -327,6 +345,21 @@ export default function Profile() {
                     onChange={(e) => setUserWebsite(e.currentTarget.value)}
                     placeholder={userWebsite}
                     value={userWebsite}
+                  />
+                <FormLabel>FacebookURL:</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    onChange={(e) => setfacebookURL(e.currentTarget.value)}
+                    placeholder={facebookURL}
+                    value={facebookURL}
+                  />
+                  
+                <FormLabel>TwitterURL:</FormLabel>
+                  <TextField
+                    variant="outlined"
+                    onChange={(e) => settwitterURL(e.currentTarget.value)}
+                    placeholder={twitterURL}
+                    value={twitterURL}
                   />
                 </FormControl>
 

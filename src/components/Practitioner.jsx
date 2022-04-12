@@ -132,7 +132,7 @@ export default function HealingNetwork() {
               </Grid>
             </Card>
           </Grid>
-          <Grid item xs={12} direction="row" style={{ marginBottom: "5px" }}>
+          <Grid item container xs={12} direction="row" style={{ marginBottom: "5px" }}>
             <Card>
               <Grid container direction="row">
                 <Grid item xs={2}>
