@@ -189,17 +189,17 @@ export default function Profile() {
         settwitterURL(twitterURLIn);
       }
       const tiktokURLIn = user?.attributes.tiktokURL;
-      if(tiktokURLIn){
-        settiktokURL(tiktokURLIn)
+      if (tiktokURLIn) {
+        settiktokURL(tiktokURLIn);
       }
 
       const youtubeURLIn = user?.attributes.youtubeURL;
-      if(youtubeURLIn){
+      if (youtubeURLIn) {
         setyoutubeURL(youtubeURLIn);
       }
 
       const instagramURLIn = user?.attributes.instagramURL;
-      if(instagramURLIn){
+      if (instagramURLIn) {
         setinstagramURL(instagramURLIn);
       }
 
@@ -382,21 +382,21 @@ export default function Profile() {
                     placeholder={twitterURL}
                     value={twitterURL}
                   />
-                <FormLabel>TiktokURL:</FormLabel>
+                  <FormLabel>TiktokURL:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => settiktokURL(e.currentTarget.value)}
                     placeholder={tiktokURL}
                     value={tiktokURL}
                   />
-                <FormLabel>YoutubeURL:</FormLabel>
+                  <FormLabel>YoutubeURL:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => setyoutubeURL(e.currentTarget.value)}
                     placeholder={youtubeURL}
                     value={youtubeURL}
                   />
-                <FormLabel>InstagramURL:</FormLabel>
+                  <FormLabel>InstagramURL:</FormLabel>
                   <TextField
                     variant="outlined"
                     onChange={(e) => setinstagramURL(e.currentTarget.value)}
