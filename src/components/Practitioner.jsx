@@ -90,13 +90,44 @@ export default function HealingNetwork() {
                 </a>
               </Grid>
               <Grid item xs={12}>
-                <a href={user.facebookURL} target="_blank" rel="noopener noreferrer"><FacebookIcon /></a>
-                <a href={user.youtubeURL} target="_blank" rel="noopener noreferrer"> <YouTubeIcon /></a>
-                <a href={user.instagramURL} target="_blank" rel="noopener noreferrer"><InstagramIcon /></a>
-                <a href={user.twitterURL} target="_blank" rel="noopener noreferrer"> <TwitterIcon /></a>
-                <a href={user.tiktokURL} target="_blank" rel="noopener noreferrer"> TikTOK</a>
-                
-             
+                <a
+                  href={user.facebookURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FacebookIcon />
+                </a>
+                <a
+                  href={user.youtubeURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  <YouTubeIcon />
+                </a>
+                <a
+                  href={user.instagramURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <InstagramIcon />
+                </a>
+                <a
+                  href={user.twitterURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  <TwitterIcon />
+                </a>
+                <a
+                  href={user.tiktokURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  TikTOK
+                </a>
               </Grid>
             </Grid>
           </Grid>
@@ -167,7 +198,13 @@ export default function HealingNetwork() {
               </Grid>
             </Card>
           </Grid>
-          <Grid container item xs={12} direction="row" style={{ marginBottom: "20px" }}>
+          <Grid
+            container
+            item
+            xs={12}
+            direction="row"
+            style={{ marginBottom: "20px" }}
+          >
             <Card>
               <Grid container direction="row">
                 <Grid item xs={2}>
