@@ -69,7 +69,7 @@ function Account() {
   if (!isAuthenticated || !user) {
     console.log(isAuthenticated);
     console.log(account);
-    console.log(user)
+    console.log(user);
 
     return (
       <>
