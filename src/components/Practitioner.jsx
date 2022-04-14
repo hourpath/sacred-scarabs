@@ -80,23 +80,26 @@ export default function HealingNetwork() {
                 {user.about}
               </Grid>
               <Grid item xs={12}>
-                {" "}
+                {user?.websiteURL && 
                 <a
                   href={user.websiteURL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {user.websiteURL}
-                </a>
+                </a>}
               </Grid>
               <Grid item xs={12}>
+                {user?.facebookURL && 
                 <a
                   href={user.facebookURL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <FacebookIcon />
-                </a>
+                </a>}
+              
+                {user?.youtubeURL && 
                 <a
                   href={user.youtubeURL}
                   target="_blank"
@@ -104,22 +107,25 @@ export default function HealingNetwork() {
                 >
                   {" "}
                   <YouTubeIcon />
-                </a>
-                <a
+                </a>}
+
+                {user?.instagramURL &&
+                 <a
                   href={user.instagramURL}
                   target="_blank"
                   rel="noopener noreferrer"
-                >
+                  >
                   <InstagramIcon />
-                </a>
+                </a> }
+                {user?.twitterURL && 
                 <a
                   href={user.twitterURL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {" "}
                   <TwitterIcon />
-                </a>
+                </a> }
+                  {user?.tiktokURL &&
                 <a
                   href={user.tiktokURL}
                   target="_blank"
@@ -127,7 +133,7 @@ export default function HealingNetwork() {
                 >
                   {" "}
                   TikTOK
-                </a>
+                </a>}
               </Grid>
             </Grid>
           </Grid>
