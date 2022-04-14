@@ -18,7 +18,6 @@ export default function HealingNetwork() {
   const [loaded, setLoaded] = useState(false);
   const { isInitialized } = useMoralis();
 
-
   useEffect(() => {
     if (isInitialized) {
       const queryParams = { username: username };
@@ -127,12 +126,14 @@ export default function HealingNetwork() {
             </Grid>
           </Grid>
 
-          <Grid container
-                item
-                xs={12}
-                direction="row"
-                style={{ marginBottom: "5px" }}>
-                {<BasicTabs user={user} />}
+          <Grid
+            container
+            item
+            xs={12}
+            direction="row"
+            style={{ marginBottom: "5px" }}
+          >
+            {<BasicTabs user={user} />}
           </Grid>
 
           <Grid
@@ -141,8 +142,7 @@ export default function HealingNetwork() {
             xs={12}
             direction="row"
             style={{ marginBottom: "5px" }}
-          >
-          </Grid>
+          ></Grid>
           {/* {renderServices()} */}
         </div>
       ) : (
