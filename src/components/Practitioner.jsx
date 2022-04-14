@@ -11,6 +11,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import BasicTabs from "./BasicTabs";
 import Avatar from "@mui/material/Avatar";
+import { Icon } from '@iconify/react';
 
 export default function HealingNetwork() {
   let { username } = useParams();
@@ -137,7 +138,7 @@ export default function HealingNetwork() {
                     rel="noopener noreferrer"
                   >
                     {" "}
-                    TikTOK
+                    <Icon icon="simple-icons:tiktok" />
                   </a>
                 )}
               </Grid>

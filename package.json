@@ -74,6 +74,7 @@
     ]
   },
   "devDependencies": {
+    "@iconify/react": "^3.2.1",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
