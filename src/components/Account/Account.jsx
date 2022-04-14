@@ -58,7 +58,7 @@ const styles = {
 };
 
 function Account() {
-  const { authenticate, isAuthenticated, account, chainId, logout } =
+  const { authenticate, isAuthenticated, account, chainId, logout, user } =
     useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false);
@@ -66,7 +66,11 @@ function Account() {
   const [hover, setHover] = useState(false);
   const [target, setTarget] = useState("");
 
-  if (!isAuthenticated || !account) {
+  if (!isAuthenticated || !user) {
+    console.log(isAuthenticated);
+    console.log(account);
+    console.log(user)
+
     return (
       <>
         <div className="underline" onClick={() => setIsAuthModalVisible(true)}>
