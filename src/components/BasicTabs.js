@@ -19,11 +19,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -45,27 +41,27 @@ function renderServices(services) {
   return services.map((service) => {
     return (
       <div key={service.id}>
-      <Card style={{margin: '5px'}}>
-        <Grid container direction="row">
-          <Grid item xs={2}>
-            <CardMedia
-              component="img"
-              height="200"
-              style={{
-                padding: "5px",
-                paddingRight: "10px",
-                marginBottom: "5px",
-              }}
-            />
+        <Card style={{ margin: "5px" }}>
+          <Grid container direction="row">
+            <Grid item xs={2}>
+              <CardMedia
+                component="img"
+                height="200"
+                style={{
+                  padding: "5px",
+                  paddingRight: "10px",
+                  marginBottom: "5px",
+                }}
+              />
+            </Grid>
+            <Grid item xs={10}>
+              <h1>{service.name}</h1>
+              <h4>{service.description}</h4>
+              <p>{service.price}</p>
+              <p>Reviews</p>
+            </Grid>
           </Grid>
-          <Grid item xs={10}>
-            <h1>{service.name}</h1>
-            <h4>{service.description}</h4>
-            <p>{service.price}</p>
-            <p>Reviews</p>
-          </Grid>
-        </Grid>
-      </Card>
+        </Card>
       </div>
     );
   });
@@ -97,10 +93,7 @@ export default function BasicTabs(props) {
         Users Collections
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div>
-        {user?.services &&  renderServices(user.services)}
-        </div>
-      
+        <div>{user?.services && renderServices(user.services)}</div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Users Creations
