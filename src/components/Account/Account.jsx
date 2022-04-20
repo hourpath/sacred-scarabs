@@ -66,10 +66,7 @@ function Account() {
   const [hover, setHover] = useState(false);
   const [target, setTarget] = useState("");
 
-  if (!isAuthenticated || !user) {
-    console.log(isAuthenticated);
-    console.log(account);
-    console.log(user);
+  if (!isAuthenticated || !user || !account) {
 
     return (
       <>

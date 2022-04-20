@@ -162,7 +162,6 @@ export default function Profile() {
         setUserBio(userBioIn);
       }
       const userAvatar = user?.attributes?.avatarFile;
-      console.log(userAvatar);
       if (userAvatar) {
         setAvatarFile(userAvatar);
       } else {
@@ -173,7 +172,6 @@ export default function Profile() {
         setUserWebsite(userWebsiteIn);
       }
 
-      console.log(user?.attributes);
       const showAddressIn = user?.attributes.showAddress;
       if (showAddressIn) {
         setShowAddress(showAddressIn);
@@ -253,13 +251,10 @@ export default function Profile() {
   };
 
   const handleSave = async () => {
-    console.log("hi");
-    console.log(userBio);
     setIsSaving(true);
     const file = photoFile;
     const name = photoFileName;
     const profilePic = new Moralis.File(name, file);
-    console.log(username, email, userBio);
     let useOld = false;
     if (photoFile) {
       await setUserData({
@@ -279,8 +274,6 @@ export default function Profile() {
       await user.save();
     } else {
       useOld = true;
-      console.log("no file");
-      console.log(avatarFile);
       await setUserData({
         about: userBio,
         email: email,
