@@ -67,7 +67,6 @@ function Account() {
   const [target, setTarget] = useState("");
 
   if (!isAuthenticated || !user || !account) {
-
     return (
       <>
         <div className="underline" onClick={() => setIsAuthModalVisible(true)}>

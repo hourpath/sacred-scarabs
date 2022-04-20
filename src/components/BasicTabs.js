@@ -55,10 +55,12 @@ function renderServices(services) {
               />
             </Grid>
             <Grid item xs={10}>
-              <h1><b>{service.name}</b></h1>
+              <h1>
+                <b>{service.name}</b>
+              </h1>
               <h4>{service.description}</h4>
-             <p> Price: ${service.price}</p>
-              
+              <p> Price: ${service.price}</p>
+
               <p>Reviews</p>
             </Grid>
           </Grid>
@@ -94,7 +96,13 @@ export default function BasicTabs(props) {
         Users Collections
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div>{user?.services ? renderServices(user.services) : <h4>No Services Listed</h4>}</div>
+        <div>
+          {user?.services ? (
+            renderServices(user.services)
+          ) : (
+            <h4>No Services Listed</h4>
+          )}
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Users Creations
