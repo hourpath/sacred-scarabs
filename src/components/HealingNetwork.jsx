@@ -90,7 +90,7 @@ export default function HealingNetwork() {
                 <CardMedia
                   component="img"
                   height="140"
-                  image="/static/images/cards/contemplative-reptile.jpg"
+                  image={loaded ? users[0].avatarFile._url : ""}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
